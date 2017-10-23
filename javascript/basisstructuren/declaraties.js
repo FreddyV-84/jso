@@ -14,6 +14,7 @@ geheelGetal = 2016;
 
 //een voor een afdrukken:
 console.log("geheelGetal          = " + geheelGetal);
+// string concatenation (+) When plus sign is combined with a string, it will do an implicit conversion to string
 console.log("grootsteGeheelGetal   = " + grootsteGeheelGetal);
 console.log("decimaalGetal   = " + decimaalGetal);
 console.log("string        = " + string);
