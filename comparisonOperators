@@ -1,3 +1,6 @@
+COMPARISON OPERATORS
+=====================
+
 When comparing strings, JavaScript uses the Unicode character value of the string expression.
 
 The following describes how the different groups of operators behave depending on the types and values of expression1 and expression2:
