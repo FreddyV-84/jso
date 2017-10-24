@@ -9,6 +9,9 @@ cd                  go to home directory
 cd ..               go to parent directory
 ls                  list content of current directory
 ls <dir>            list content of given directory
+ls -l               list in long format
+ls-a                list all files
+ls-R                Recursively list files in subdirectories
 
 =======================================================================
 ===== Visual Studio Code ==============================================
