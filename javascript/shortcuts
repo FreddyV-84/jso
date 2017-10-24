@@ -1,0 +1,14 @@
+=======================================================================
+===== Bash ============================================================
+=======================================================================
+command-K of clear: clear screen
+ctrl-z / ctrl-c:    exit running process
+pwd                 show path to working directory (current folder)
+cd                  change working directory
+cd ..               go up one level
+
+=======================================================================
+===== Visual Studio Code ==============================================
+=======================================================================
+Shift-Command-P     Command Palette
+Shift-Alt-F         Format Code
