@@ -4,7 +4,7 @@ The following describes how the different groups of operators behave depending o
 
 
 Relational (<, >, <=, >=)
-
+=======================================================================================================
     - Attempt to convert both expression1 and expression2 into numbers.
 
     - If both expressions are strings, do a lexicographical string comparison.
@@ -18,7 +18,7 @@ Relational (<, >, <=, >=)
     - Positive Infinity is greater than everything including itself.
 
 Equality (==, !=)
-
+=======================================================================================================
     - If the types of the two expressions are different, attempt to convert them to string, number, or Boolean.
 
     - NaN is not equal to anything including itself.
@@ -32,5 +32,5 @@ Equality (==, !=)
     - Every other comparison is considered unequal.
 
 Identity (===. !==)
-
+=======================================================================================================
 - These operators behave identically to the equality operators except no type conversion is done, and the types must be the same to be considered equal.
