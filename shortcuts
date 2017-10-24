@@ -19,3 +19,4 @@ ls-R                Recursively list files in subdirectories
 Shift-Command-P     Command Palette
 Shift-Alt-F         Format Code
 Ctrl-`              Show/Hide Terminal
+Shift-Alt-A         Toggle Comment Block
