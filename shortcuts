@@ -3,12 +3,16 @@
 =======================================================================
 command-K of clear: clear screen
 ctrl-z / ctrl-c:    exit running process
-pwd                 show path to working directory (current folder)
-cd                  change working directory
-cd ..               go up one level
+pwd                 show path to working directory
+cd <dir>            change working directory to given directory
+cd                  go to home directory
+cd ..               go to parent directory
+ls                  list content of current directory
+ls <dir>            list content of given directory
 
 =======================================================================
 ===== Visual Studio Code ==============================================
 =======================================================================
 Shift-Command-P     Command Palette
 Shift-Alt-F         Format Code
+Ctrl-`              Show/Hide Terminal
