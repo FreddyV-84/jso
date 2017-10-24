@@ -3,6 +3,5 @@
 var i;
 i = 1;
 do {
-    console.log(i);
-    ++i;
+    console.log(i++);
 } while (i <= 10);

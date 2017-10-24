@@ -1,5 +1,7 @@
 'use strict';
 
+// Switch gebruikt === tussen expressie en cases.
+
 var datum = new Date();
 var uur = datum.getHours();
 switch (uur) {
