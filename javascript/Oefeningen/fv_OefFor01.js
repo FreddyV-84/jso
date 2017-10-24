@@ -5,7 +5,7 @@ var key = require('readline-sync');
 var startGetal;
 var recipient;
 var recipientSingular;
-var consumption = "beer";
+var consumption;
 var invoer;
 var total;
 
@@ -18,16 +18,16 @@ do {
     for (var i = startGetal; i >= 0; i--) {
         switch (i) {
             case 0:
-                console.log("No more " + recipient + " of beer on the wall, no more " + recipient + " of beer.");
-                console.log("Go to the store and buy some more, " + startGetal + " " + recipient + " of beer on the wall.");
+                console.log("No more " + recipient + " of " + consumption + " on the wall, no more " + recipient + " of " + consumption + ".");
+                console.log("Go to the store and buy some more, " + startGetal + " " + recipient + " of " + consumption + " on the wall.");
                 break;
             case 1:
-                console.log(i + " " + recipientSingular + " of beer on the wall, " + i + " " + recipientSingular + " of beer.");
-                console.log("Take one down and pass it around, " + "no more " + recipient + " of beer on the wall.");
+                console.log(i + " " + recipientSingular + " of " + consumption + " on the wall, " + i + " " + recipientSingular + " of " + consumption + ".");
+                console.log("Take one down and pass it around, " + "no more " + recipient + " of " + consumption + " on the wall.");
                 break;
             default:
-                console.log(i + " " + recipient + " of beer on the wall, " + i + " " + recipient + " of beer.");
-                console.log("Take one down and pass it around, " + (i - 1) + " " + recipient + " of beer on the wall.");
+                console.log(i + " " + recipient + " of " + consumption + " on the wall, " + i + " " + recipient + " of " + consumption + ".");
+                console.log("Take one down and pass it around, " + (i - 1) + " " + recipient + " of " + consumption + " on the wall.");
 
         }
         console.log("\n");
