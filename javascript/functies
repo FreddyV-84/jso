@@ -1,0 +1,6 @@
+function declaration
+with parameters
+
+function call
+with arguments
+These arguments are placeholders or aliases and point to the same memoryaddress where the value of the variable is stored.
