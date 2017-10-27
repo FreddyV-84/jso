@@ -1,0 +1,98 @@
+html {
+    background-color: black;
+}
+
+body {
+    background-color: white;
+    border: 3px solid black;
+    margin: 20px auto;
+    font-size: 14px;
+}
+
+h1 {
+    background-color:cornflowerblue;
+    border: 3px solid black;
+    margin: 10px;
+}
+
+/* position: static;
+position: relative;
+position: absolute;
+position: fixed;
+position: sticky; */
+
+div{
+    width: 100px;
+    height: 100px;
+    
+    padding: 10px 10px 10px 10px;
+    border: 3px solid black;
+    margin: 10px 10px 10px 10px;
+    margin: 0;
+    
+    line-height: 16px;
+    text-align: left;
+}
+
+#box1 {
+    background-color:red;
+
+    display: block;
+    position: static; /* default normal flow */
+}
+
+#box2 {
+    background-color:orangered;
+
+    display: inline-block;
+    position: relative; /* offset relative to normal position in normal flow */
+
+    top: 30px;
+    right: 20px;
+}
+
+#box3 {
+    background-color:blue;
+
+    display: inline-block;
+    position: relative; /* offset relative to normal position in normal flow */
+
+    top: 30px;
+    left:10px;
+    right: 20px;
+}
+
+#box4 {
+    background-color:yellow;
+
+    display: inline-block;
+    position:sticky; /* read tip */
+    
+    top: 20px;
+    left: 300px;
+}
+
+#box5 {
+    background-color:green;
+
+    display: inline-block;
+    position: fixed;
+    
+    top: 100px;
+    left: 400px;
+}
+
+#box6 {
+    background-color:orange;
+
+    display: inline-block;
+    position: absolute;
+    
+    top:300px;
+    left:90px;
+}
+
+.klein {
+    width:80px;
+    height: 50px;
+}
