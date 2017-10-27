@@ -1,40 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
+    <title>CSS Selectors</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {
-            font-size: 20px;
-            margin-top: 25px;
+        h1.belangrijk {
+            color: red;
         }
 
+        p em {
+            font-size: 2em;
+        }
+
+        div>li {
+            text-decoration: underline;
+        }
+
+        h1,
         p {
-            margin: 40px;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        #eerste {
-            background: greenyellow;
-            margin-bottom: 20px;
+        li.belangrijk {
+            text-decoration: underline;
         }
 
-        .groteMarge{
-            margin-bottom: 50px;
+        em {
+            border-bottom: 3px double;
         }
     </style>
 </head>
 
 <body>
-    <h1>Dit is de hoofdtitel</h1>
-    <p class="groteMarge" id="eerste">Dit is de eerste paragraaf.</p>
-    <p class="groteMarge">Dit is de tweede paragraaf.</p>
-    <p class ="groteMarge">Dit is de tweede paragraaf.</p>
-    <p class="groteMarge">Dit is de derde paragraaf.</p>
-
-    
+    <h1 class="belangrijk">Eerste hoofdstuk</h1>
+    <p class="belangrijk">Eerste paragraaf van het
+        <em>eerste</em> hoofdstuk</p>
+    <h1>Tweede
+        <em>hoofdstuk</em>
+    </h1>
+    <em class="belangrijk">Een tekst in het tweede hoofdstuk</em>
+    <div>
+        De lijst:
+        <ul>
+            <li class="active belangrijk">Een punt</li>
+            <li>twee punten</li>
+            <li>drie punten</li>
+        </ul>
+    </div>
 </body>
 
 </html>
