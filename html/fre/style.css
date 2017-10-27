@@ -1,0 +1,61 @@
+* {
+    box-sizing:content-box;
+}
+
+body {
+    display: block;
+    margin: 8px;
+}
+
+.eerste {
+    padding: 20px;                      /* all sides */
+    padding: 100px 20px;                /* vertical (top & bottom) horizontal (left & right) */
+    padding: 100px 20px 100px;          /* top horizontal (left & right) bottom */
+    padding: 100px 20px 100px 20px;     /* top right bottom left TRBL */
+    padding: 15px;
+}
+
+p {
+    background-color: aquamarine;
+    width:500px;
+    border-width: 10px;
+    border-color: black;
+    padding: 15px;
+}
+
+.eerste > em {
+    text-decoration: underline;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: blue;
+    background-color:black;
+}
+
+a:visited {
+    color: purple;
+    background-color: orange;
+}
+
+a:hover {
+    background-color: grey;
+}
+
+a:active {
+    color: red;
+    font-weight: bold;
+}
+
+a::after {
+    content: url(https://d9me64que7cqs.cloudfront.net/images/favicon-cb34a003c6f2f637ee8f4f7b406f3b9b120b918c04cabec7f03a760e708977ea9689a1c638f4396def8dce7b202cd007eae91946cc3c4a578aa8b5694226cfc6.ico);
+    top: 5px;
+    position: relative;
+}
+
+a[href^="http://"]::after {
+    content: none;
+}
