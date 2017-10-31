@@ -13,7 +13,7 @@ function fahrenheit(cGraden) {
     return (9.0 / 5.0 * cGraden + 32);
 }
 
-getal = input.question("Geef een getal in: ");
+getal = parseFloat(input.question("Geef een getal in: "));
 
 console.log(getal + " graden fahrenheit = " + celsius(getal) + " graden celcius");
 console.log(getal + " graden celsius = " + fahrenheit(getal) + " graden fahrenheit");
