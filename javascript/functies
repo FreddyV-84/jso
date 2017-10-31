@@ -1,6 +1,8 @@
 function declaration
-with parameters
+with parameters or also called formal parameters
 
 function call
 with arguments
-These arguments are placeholders or aliases and point to the same memoryaddress where the value of the variable is stored.
+These arguments are placeholders or aliases and are passed by value called arguments or actual parameters
+
+The parameters of a function call are the function's arguments. Arguments are passed to functions by value. If the function changes the value of an argument, this change is not reflected globally or in the calling function. However, object references are values, too, and they are special: if the function changes the referred object's properties, that change is visible outside the function, as shown in the following example:
