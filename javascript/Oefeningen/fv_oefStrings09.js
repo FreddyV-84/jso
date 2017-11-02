@@ -17,11 +17,14 @@ function getGender(rijksregisterNummer) {
 
 function getAgeByRRN(rijksregisternummer) {
     var controlegetal = parseInt(rijksregisterNummer.slice(9, 11));
-    var getal = parseInt(rijksregisternummer.substr(0, 9));
     //var getal = parseInt(rijksregisterNummer.slice(0,9));
-    var year = parseInt(rijksregisterNummer.slice(0, 2));
-    var month = parseInt(rijksregisterNummer.slice(2, 4));
-    var day = parseInt(rijksregisterNummer.slice(4, 6));
+    var getal = parseInt(rijksregisternummer.substr(0, 9));
+    //var year = parseInt(rijksregisterNummer.slice(0, 2));
+    var year = parseInt(rijksregisterNummer.substr(0, 2));
+    //var month = parseInt(rijksregisterNummer.slice(2, 4));
+    var month = parseInt(rijksregisterNummer.substr(2, 2));
+    //var day = parseInt(rijksregisterNummer.slice(4, 6));
+    var day = parseInt(rijksregisterNummer.substr(4, 2));
 
     var today = new Date();
     var birthday = new Date();
