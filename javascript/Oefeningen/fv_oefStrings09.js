@@ -17,7 +17,8 @@ function getGender(rijksregisterNummer) {
 
 function getAgeByRRN(rijksregisternummer) {
     var controlegetal = parseInt(rijksregisterNummer.slice(9, 11));
-    var getal = parseInt(rijksregisternummer.slice(0, 9));
+    var getal = parseInt(rijksregisternummer.substr(0, 9));
+    //var getal = parseInt(rijksregisterNummer.slice(0,9));
     var year = parseInt(rijksregisterNummer.slice(0, 2));
     var month = parseInt(rijksregisterNummer.slice(2, 4));
     var day = parseInt(rijksregisterNummer.slice(4, 6));
@@ -41,5 +42,6 @@ function getAgeByRRN(rijksregisternummer) {
 // 84080605731 --> moi
 // 14122908237 --> kindje van Irina
 // 88060244824 --> Chloé
+
 console.log("Geslacht:  " + getGender(rijksregisterNummer));
 console.log("Leeftijd:  " + getAgeByRRN(rijksregisterNummer));
