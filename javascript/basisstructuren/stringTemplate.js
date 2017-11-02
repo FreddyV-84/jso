@@ -1,7 +1,7 @@
 // bron: https://egghead.io/lessons/ecmascript-6-string-templates?course=learn-es6-ecmascript-2015
 
 var begroeting = "Hello";
-var bericht = begroeting +" world!";
+var bericht = begroeting + " world!";
 console.log(bericht);
 
 // in es6 met een string template:
@@ -10,7 +10,7 @@ console.log(bericht);
 var bericht2 = `${begroeting} world!`;
 console.log(bericht2);
 // in de expressie mag een berekening staan
-console.log(`${begroeting.toUpperCase()} world!`);
+console.log(`${begroeting.toUpperCase()} world!`); // back-tick character
 
 // white space in een template string wordt niet genegeerd
 var berichtMetNieuweLijn = `Wat
