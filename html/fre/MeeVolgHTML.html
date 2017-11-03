@@ -6,62 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        html {
+            background: lightgray;
+        }
+
         body {
             margin: 0 auto;
-            background-color: cadetblue;
+            max-width: 1024px;
+            min-height: 100vh;
+
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            grid-template-rows: auto 1fr auto;
+            grid-template-areas: "header header" "aside main" "footer footer";
         }
 
-        #flexContainer {
-            display: flex;
-            flex-flow: row;
-            justify-content: flex-start;
-            height: 600px;
-            /* Or whatever */
-            width:1200px;
-            background-color: blueviolet;
+        #page-header {
+            grid-area: header;
+            background-color: purple;
         }
 
-        .flexItem {
+        #left-sidebar {
+            grid-area: aside;
+            background-color: greenyellow;
+        }
+
+        #main {
+            grid-area: main;
             background-color: blue;
-            border:2px solid black;
-            width: 100px;
-            /* Or whatever */
-            height: 100px;
-            /* Or whatever */
-            /* margin: auto; */
-            /* Magic! */
         }
 
-        .flexItem__bigger {
-            flex-grow: 2;
+        #page-footer {
+            grid-area: footer;
+            background-color: red;
         }
     </style>
 </head>
 
 <body>
-    <div id="flexContainer">
-        <div class="flexItem">flexItem1</div>
-        <div class="flexItem">flexItem2</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-        <div class="flexItem">flexItem3</div>
-
-    </div>
+    <header id="page-header" class="border content-padding"> header</header>
+    <main id="main" class="border content-padding">main
+    </main>
+    <aside id="left-sidebar" class="border content-padding"> aside</aside>
+    <footer id="page-footer" class="border content-padding">footer </footer>
 </body>
 
 </html>
