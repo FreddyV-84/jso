@@ -1,48 +1,89 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 
 <head>
-    <title></title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-        body {
-            margin: 0;
-            height: 100vh;
-        }
-
-        .box {
-            background-color: darkcyan;
-            height: 50px;
-            width: 50px;
+        * {
             border: 1px solid black;
-            margin: 10px;
         }
 
-        #wrapper {
+        form {
+            border: 1px solid black;
+            margin: 0 auto;
+            padding: 0;
+            width: 450px;
             display: flex;
             flex-flow: row wrap;
-            justify-content: flex-start;
-            height: 100%;
+        }
+
+
+
+        input:not(:focus):required {
+            border: 1px solid red;
         }
     </style>
 </head>
 
 <body>
-    <div id="wrapper">
-        <div class="box">Box</div>
-        <div class="box">Box</div>
-        <div class="box">Box</div>
-        <div class="box">Box</div>
-        <div class="box">Box</div>
-        <div class="box">Box</div>
-        <div class="box">Box</div>
-        <div class="box">Box</div>
-        <div class="box">Box</div>
-        <div class="box">Box</div>
+    <form action="sollicitatie.php" method="POST">
 
-    </div>
-    <!-- div#wrapper -->
+        <div class="inputRegel">
+            <input type="text" name="txtNaam" id="txtNaam" required>
+            <label for="txtNaam">naam</label>
+        </div>
+
+        <div class="inputRegel">
+            <input type="date" name="gebDatum" id="gebDatum">
+            <label for="gebDatum">geboortedatum</label>
+        </div>
+
+        <div class="inputRegel">
+            <input type="checkbox" name="chkRijbewijs" id="chkRijbewijs">
+            <label for="chkRijbewijs">heb je een rijbewijs B</label>
+        </div>
+
+        <div class="inputRegel">
+            <div id="labelRadio">Hoe goed is je nederlands</div>
+
+            <div id="radioContainer">
+                <div class="inputRadio">
+                    <label for="compNedGoed">Goed</label>
+                    <input type="radio" name="compNed" id="compNedGoed" value="goed">
+                </div>
+
+                <div class="inputRadio">
+                    <label for="compNedMiddelmatig">Middelmatig</label>
+                    <input type="radio" name="compNed" id="compNedMiddelmatig" value="middelmatig" checked>
+                </div>
+
+
+                <div class="inputRadio">
+                    <label for="compNedSlecht">Slecht</label>
+                    <input type="radio" name="compNed" id="compNedSlecht" value="slecht">
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="inputRegel">
+            <textarea name="txtOmschrijving" id="txtOmschrijving" placeholder="geef een korte beschrijving van jezelf"></textarea>
+            <label for="txtOmschrijving">Omschrijving</label>
+        </div>
+
+
+        <div class="inputRegel">
+            <input type="text" name="txtPost" id="txtPost" pattern="[0-9]{4}">
+            <label for="txtPost">postcode</label>
+        </div>
+
+        <div class="inputRegel submit">
+            <input type="submit" name="btnPost" value="Verstuur">
+        </div>
+    </form>
 </body>
 
-</html>`
+</html>
