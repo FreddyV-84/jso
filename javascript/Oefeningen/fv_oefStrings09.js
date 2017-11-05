@@ -45,6 +45,7 @@ function getAgeByRRN(rijksregisternummer) {
 // 84080605731 --> moi
 // 14122908237 --> kindje van Irina
 // 88060244824 --> Chloé
+// 90081715223 --> Nikki
 
 console.log("Geslacht:  " + getGender(rijksregisterNummer));
 console.log("Leeftijd:  " + getAgeByRRN(rijksregisterNummer));
