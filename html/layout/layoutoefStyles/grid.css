@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html{
+    font-size:16px;
+}
+
+body{
+    margin:0;
+}
+
+.formcontainer{
+    background-color: rgb(44, 112, 171);
+    width: 320px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /* grid-template-columns: repeat(2, 200px); */
+    /* grid-template-columns: 1fr 1fr; */
+    /* grid-column-gap: 10px; */
+    font-size:0.85em;
+    margin: 0 auto;
+}
+
+.formlabel{
+    background-color: rgb(58, 139, 212);
+    /* min-width: 200px; */
+    text-align: right;
+}
+
+.forminput{
+    background-color: rgb(168, 198, 224);
+    /* min-width: 200px; */
+}
+
+.form-radiogroup{
+    background-color: rgb(150, 171, 218);
+}
+
+.form-radiogroup > label{
+    display: block;
+}
+
+.form-radiogroup > input{
+    /* min-width: 200px; */
+}
+
+.formbutton{
+    grid-column-start: 2;
+}
