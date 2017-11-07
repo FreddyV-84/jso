@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+
+.formcontainer{
+    background-color: rgb(44, 112, 171);
+    width: 400px;
+    overflow: hidden;
+}
+
+.formlabel{
+    background-color: rgb(58, 139, 212);
+    float: left;
+    width: 200px;
+    text-align: right;
+}
+
+.forminput{
+    background-color: rgb(168, 198, 224);
+    float: left;
+    width: 200px;
+}
+
+.form-radiogroup{
+    background-color: rgb(150, 171, 218);
+    float: left;
+}
+
+.form-radiogroup > label{
+    display: block;
+}
+
+.form-radiogroup > input{
+    width: 200px;
+}
+
+.formbutton{
+    float: left;
+    margin-left: 200px;
+}
