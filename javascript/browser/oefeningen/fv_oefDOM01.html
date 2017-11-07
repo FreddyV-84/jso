@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fv_OefEvents01</title>
+    <script>
+        // Definitie van de event handler (functie)
+        function pageLoadHandler() {
+            alert("I'm alive!\nonload event triggered");
+        }
+
+        function ready() {
+            alert("I'm ready\nDOMContentLoaded event triggered");
+        }
+
+        // eventhandler registreren
+        window.onload = pageLoadHandler;
+        document.addEventListener("DOMContentLoaded", ready);
+    </script>
+</head>
+
+<body>
+    Event handler van PageLoad gedefinieerd en geregistreerd
+</body>
+
+</html>

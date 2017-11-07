@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Life Cycle</title>
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script>
+        // Definitie van de event handler (functie)
+        function pageLoadHandler() {
+            alert("onload event triggered");
+            // image is loaded at this time
+            alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+
+            // the script doesn't not execute until the stylesheet is loaded
+            alert(getComputedStyle("margin-top: " + document.body).marginTop);
+
+        }
+
+        function DOMReady() {
+            alert("DOMContentLoaded event triggered");
+
+            // image is not yet loaded (unless was cached), so the size is 0x0
+            alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+
+            // the script doesn't not execute until the stylesheet is loaded
+            alert(getComputedStyle("margin-top: " + document.body).marginTop);
+        }
+
+        // eventhandler registreren
+        window.onload = pageLoadHandler;
+        document.addEventListener("DOMContentLoaded", DOMReady);
+
+    </script>
+</head>
+
+<body>
+    Browser autofill happens after DOMContentLoaded event but can have a slight delay. Scripts with async or defer can ommit
+    this delay.
+    <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
+</body>
+
+</html>

@@ -1,8 +1,5 @@
 'use strict';
 
-var getal1 = "10";
-var getal2 = "2";
+var str = "str";
 
-if (getal1 < getal2) {
-    console.log("kleiner");
-}
+console.log(typeof(str));

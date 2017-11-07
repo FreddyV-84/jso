@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fv_OefEvents01</title>
+    <script>
+        function switchValues() {
+            var textBox1 = frm.txt1;
+            var textBox2 = frm.txt2;
+            var tmp = textBox1.value;
+            textBox1.value = textBox2.value;
+            textBox2.value = tmp;
+        }
+
+        function init() {
+            frm.btn.onclick = switchValues;
+        }
+
+        window.onload = init;
+    </script>
+</head>
+
+<body>
+    <form action="" name="frm">
+        <input type="text" name="txt1">
+        <input type="text" name="txt2">
+        <input type="button" name="btn" value="Switch">
+    </form>
+</body>
+
+</html>

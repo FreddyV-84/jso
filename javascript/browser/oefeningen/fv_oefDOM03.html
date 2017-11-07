@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fv_OefEvents01</title>
+    <script>
+        // Definitie van de event handler (functie)
+        function pageLoadHandler() {
+            //document.getElementById("id_btn").onclick = somByName;
+            document.getElementById("id_btn").onclick = somById;
+        }
+
+        function somByName() {
+            var getal1 = parseInt(frm.name_txt1.value); // value always returns a string
+            var getal2 = parseInt(frm.name_txt2.value);
+            var getal3 = frm.name_txt3;
+            getal3.value = getal1 + getal2;
+            alert("somByName");
+        }
+
+        function somById() {
+            var getal1 = parseInt(frm.id_txt1.value); // value always returns a string
+            var getal2 = parseInt(document.getElementById(txt1).value); // via getElementById
+            var getal3 = frm.id_txt3;
+            getal3.value = getal1 + getal2;
+            alert("somById");
+            frm.idName_A[0].value = "KOEKOEK1";
+            frm.idName_A[1].value = "KOEKOEK2";
+        }
+
+        // eventhandler registreren
+        window.onload = pageLoadHandler;
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="number" name="name_txt1" id="id_txt1" value="0">
+        <input type="number" name="name_txt2" id="id_txt2" value="0">
+        <input type="text" name="name_txt3" id="id_txt3" readonly>
+
+        <input type="button" value="som" name="name_btn" id="id_btn">
+        
+        <input type="button" value="A" name="idName_A">
+        <input type="button" value="B" id="idName_A">
+
+    </form>
+</body>
+
+</html>
