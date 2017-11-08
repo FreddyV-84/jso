@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fv_OefEvents01</title>
+    <script>
+        // Definitie van de event handler (functie)
+        function pageLoadHandler() {
+            var btn = document.getElementById("btn");
+            btn.addEventListener("click", draaiTekstOm);
+        }
+
+        function draaiTekstOm() {
+            var txt1 = document.getElementById("txt1").value;
+            var txtResult = "";
+            for (var i = txt1.length - 1; i >= 0; i--) {
+                txtResult += txt1.charAt(i);
+            }
+            document.getElementById("txt2").value = txtResult;
+        }
+
+        // eventhandler registreren
+        // window.onload = pageLoadHandler;
+        window.addEventListener("load", pageLoadHandler);
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="text" name="txt1" id="txt1" placeholder="woord">
+        <input type="text" name="txt2" id="txt2" readonly>
+
+        <input type="button" value="draai tekst om" id="btn">
+
+    </form>
+</body>
+
+</html>

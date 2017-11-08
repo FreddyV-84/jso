@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script>
+        function pageLoadEventHandler() {
+            console.log("pageLoadEventHandler");
+            document.getElementById("btnAdd").onclick = add;
+            document.getElementById("btnSub").onclick = sub;
+            document.getElementById("btnMul").onclick = mul;
+            document.getElementById("btnDiv").onclick = div;
+        }
+
+        function add() {
+            console.log("add");
+            var getal1 = parseFloat(document.getElementById("txt1").value);
+            var getal2 = parseFloat(document.getElementById("txt2").value);
+            document.getElementById("txt3").value = getal1 + getal2;
+        }
+        function sub() {
+            console.log("sub");
+            var getal1 = parseFloat(document.getElementById("txt1").value);
+            var getal2 = parseFloat(document.getElementById("txt2").value);
+            document.getElementById("txt3").value = getal1 - getal2;
+        }
+        function mul() {
+            console.log("mul");
+            var getal1 = parseFloat(document.getElementById("txt1").value);
+            var getal2 = parseFloat(document.getElementById("txt2").value);
+            document.getElementById("txt3").value = getal1 * getal2;
+        }
+        function div() {
+            console.log("div");
+            var getal1 = parseFloat(document.getElementById("txt1").value);
+            var getal2 = parseFloat(document.getElementById("txt2").value);
+            document.getElementById("txt3").value = getal1 / getal2;
+        }
+
+        window.onload = pageLoadEventHandler;
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="txt1" name="txt1">
+        <input type="text" id="txt2" name="txt2">
+
+        <input type="button" value="+" id="btnAdd">
+        <input type="button" value="-" id="btnSub">
+        <input type="button" value="*" id="btnMul">
+        <input type="button" value="/" id="btnDiv">
+
+        <input type="text" id="txt3" name="txt3" readonly>
+    </form>
+</body>
+
+</html>

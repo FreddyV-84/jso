@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fv_OefEvents01</title>
+    <script>
+        // Definitie van de event handler (functie)
+        function pageLoadHandler() {
+            var btn = document.getElementById("btn");
+            btn.addEventListener("click", controleerEmail);
+        }
+
+        function controleerEmail() {
+            var email = document.getElementById("txtEmail").value;
+            if (email.indexOf("@") == -1)
+                alert("geen geldig e-mail adres");
+            else
+                alert('geldig e-mail adres');
+        }
+
+        // eventhandler registreren
+        // window.onload = pageLoadHandler;
+        window.addEventListener("load", pageLoadHandler);
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <input type="text" name="txtEmail" id="txtEmail">
+
+        <input type="button" value="controleer emailadres" id="btn">
+
+    </form>
+</body>
+
+</html>

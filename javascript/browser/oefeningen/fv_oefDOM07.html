@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script>
+        var attempts, rGetal;
+        function pageLoadEventHandler() {
+            console.log("pageLoadEventHandler");
+            document.getElementById("btnCheck").onclick = check;
+
+            attempts = 0;
+            // generate random number between 1 and 100 (inc )
+            rGetal = parseInt((Math.random() * 100).toFixed());
+        }
+
+        function check() {
+            var getal = parseInt(document.getElementById("txt1").value);
+            var txt3 = document.getElementById("txt3");
+            if (isValidNumber(getal)) {
+                document.getElementById("txt2").value = ++attempts;
+                switch (true) {
+                    case getal > rGetal:
+                        txt3.value = "lager";
+                        break;
+                    case getal < rGetal:
+                        txt3.value = "hoger";
+                        break;
+                    case getal == rGetal:
+                        txt3.value = "juist";
+                        break;
+                }
+            }
+            else {
+                alert("ongeldig getal");
+            }
+
+        }
+
+        function isValidNumber(n) {
+            if (n >= 0 && n <= 100)
+                return true;
+            else
+                return false;
+        }
+
+        window.onload = pageLoadEventHandler;
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="number" id="txt1" name="txt1">
+        <input type="text" id="txt2" name="txt2" readonly>
+
+        <input type="button" value="controleer" id="btnCheck">
+
+        <input type="text" id="txt3" name="txt3" readonly>
+
+    </form>
+</body>
+
+</html>
