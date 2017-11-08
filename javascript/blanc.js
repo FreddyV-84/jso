@@ -1,5 +1,9 @@
 'use strict';
 
-var str = "str";
+var number;
 
-console.log(typeof(str));
+for (var i = 0; i < 20; i++) {
+    number = (1 + Math.random * 6);
+    console.log(number);
+    
+}
