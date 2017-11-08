@@ -1,0 +1,123 @@
+#wrapper{
+    margin: 0 auto;
+    display:flex;
+    flex-flow: row wrap;
+    min-width: 320px;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    background-color: rgb(255, 188, 0);
+    border-left:10px dashed red;
+    border-right: 10px dashed red;
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+header{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    order: 1;
+    /* background-color: blue; */
+    /* border: 2px solid black; */
+}
+
+main{
+    box-sizing: border-box;
+    flex: 12 1 200px;
+    order:3;
+    padding: 5px;
+    /* background-color: green; */
+    /* border: 2px solid black; */
+}
+
+aside{
+    box-sizing: border-box;
+    padding: 5px;
+    flex: 1 0 auto;
+    order: 2;
+    /* background-color: darkgreen; */
+    /* border: 2px solid black; */
+}
+
+footer{
+    box-sizing: border-box;
+    order: 4;
+    padding: 5px;
+    width: 100%;
+    border: 2px dashed #da7f0d;
+    border-radius: 10px;
+    margin-top: 10px;
+    border-style: dashed;
+    /* background-color: yellow; */
+    /* border: 2px solid black; */
+}
+
+
+
+.broodje{
+    width: 200px;
+    height: 200px;
+    margin:10px;
+    border: 2px solid black;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+.broodjeTitel{
+    font-size: 20px;
+    text-align: center;
+    margin:0;
+    margin-bottom: 25px;
+}
+
+.broodjesEtalage{
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 320px;
+    max-width: 700px;
+    border: 7px solid #e2b32f;
+    border-radius: 30px;
+    background-color: #debb5a;
+    box-shadow: 0 0 11px 4px #9e7910;    
+}
+
+.etalageTitel{
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+}
+
+.broodjeVanDeDagTitel{
+    width: 100%;
+    text-align: center;
+    text-decoration: underline;
+    font-size: 32px;
+    color: #ff3300;
+}
+
+.broodjeVanDeDag{
+    text-align: center;
+    border: 7px solid #e2b32f;
+    border-radius: 30px;
+    background-color: #debb5a;
+    box-shadow: 0 0 11px 4px #9e7910;
+}
+
+.logo{
+    width: 350px;
+    vertical-align: middle; /* align links with the logo */
+    margin-bottom:18px; /* to further align the links with the logo */
+}
+
+nav
+{
+    display: inline-block;
+    padding:10px;
+}
+
+a{
+    margin: 0 10px;
+}

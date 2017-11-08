@@ -7,48 +7,13 @@
     <title>Document</title>
     <style>
         html {
-            background: lightgray;
-        }
-
-        body {
-            margin: 0 auto;
-            max-width: 1024px;
-            min-height: 100vh;
-
-            display: grid;
-            grid-template-columns: 150px 1fr;
-            grid-template-rows: auto 1fr auto;
-            grid-template-areas: "header header" "aside main" "footer footer";
-        }
-
-        #page-header {
-            grid-area: header;
-            background-color: purple;
-        }
-
-        #left-sidebar {
-            grid-area: aside;
-            background-color: greenyellow;
-        }
-
-        #main {
-            grid-area: main;
-            background-color: blue;
-        }
-
-        #page-footer {
-            grid-area: footer;
-            background-color: red;
+            height: 100%;
         }
     </style>
 </head>
 
 <body>
-    <header id="page-header" class="border content-padding"> header</header>
-    <main id="main" class="border content-padding">main
-    </main>
-    <aside id="left-sidebar" class="border content-padding"> aside</aside>
-    <footer id="page-footer" class="border content-padding">footer </footer>
+
 </body>
 
 </html>
