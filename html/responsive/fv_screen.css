@@ -1,0 +1,132 @@
+.main, .navigation, .content{
+    /* overflow: hidden; */
+}
+
+.main{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#logo{
+    background-color: #888;
+    color:#EEE;
+    text-align: center;
+    font-size: 1.2em;
+    flex: 1 0 auto;
+    margin-right: 10px;
+}
+
+.social{
+    font-size: 1.2em;
+    margin: 0.67em 0;
+    flex: 0 0 60px;
+}
+
+.icon{
+    margin: 0 10px 0 0;
+}
+
+.container{
+    max-width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+figure{
+    margin: 1em 0;
+}
+
+.social{
+    margin: 0.67em 0;
+}
+
+.icon{
+    margin: 0 5px;
+}
+
+nav{
+    text-align: center;
+    margin-right: 70px;
+}
+
+nav >a {
+    text-decoration: none;
+    width: 25%;
+    text-align: center;
+    color: #333;
+}
+
+.ads{
+    text-align: center;
+    margin-right: 70px;
+}
+
+.ads>figure{
+    display:inline-block;
+}
+
+.masthead > figure >img{
+    max-width:100%;
+    height:auto;
+}
+
+.masthead > figure{
+    text-align: center;
+}
+
+article h2{
+    font-size: 1.5em;
+}
+
+@media only screen and (min-width:600px){
+    .container{
+        max-width: 600px;
+    }
+
+    nav{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+    }
+
+    .ads{
+        text-align: right;
+    }
+}
+
+
+
+@media screen and (min-width:960px){
+    .container{
+        max-width: 1024px;
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    header{
+        flex:1 0 100%;
+    }
+
+    aside{
+        flex:0 0 100px;
+    }
+
+    main{
+        flex:1 0 860px;
+        padding: 20px;
+    }
+
+    nav{
+        display: inline-flex;
+        flex-flow: column nowrap;
+        margin-right: unset;
+    }
+
+    .ads{
+        margin-right: unset;
+    }
+
+    .ads>figure{
+        display: block;
+    }
+}
