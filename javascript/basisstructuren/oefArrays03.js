@@ -29,7 +29,7 @@ function simuleerWorpen() {
         aantal[aantal_ogen - 1]++;
     }
 }
-
+console.log(werp());
 initAantallen();
 simuleerWorpen();
 toon_resultaat();		
