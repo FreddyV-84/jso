@@ -6,9 +6,9 @@
     max-width: 1024px;
     margin: 0 auto;
     padding: 10px 15px;
-    background-color: rgb(255, 188, 0);
-    border-left:10px dashed red;
-    border-right: 10px dashed red;
+    background-color: rgb(255, 212, 0);
+    border-left:7px dashed #ee721a;
+    border-right: 7px dashed #ee721a;
 
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -25,7 +25,7 @@ header{
 main{
     box-sizing: border-box;
     flex: 12 1 200px;
-    order:3;
+    order:2;
     padding: 5px;
     /* background-color: green; */
     /* border: 2px solid black; */
@@ -35,7 +35,7 @@ aside{
     box-sizing: border-box;
     padding: 5px;
     flex: 1 0 auto;
-    order: 2;
+    order: 3;
     /* background-color: darkgreen; */
     /* border: 2px solid black; */
 }
@@ -59,9 +59,9 @@ footer{
     width: 200px;
     height: 200px;
     margin:10px;
-    border: 2px solid black;
+    border: 4px solid #ee721a;
     border-radius: 30px;
-    box-shadow: 2px 2px 2px 2px black;
+    box-shadow: 2px 2px 5px 2px #ee721a52;
 }
 
 .broodjeTitel{
@@ -78,10 +78,11 @@ footer{
     box-sizing: border-box;
     min-width: 320px;
     max-width: 700px;
-    border: 7px solid #e2b32f;
+    border: 7px solid #ea5e1bd4;
     border-radius: 30px;
-    background-color: #debb5a;
-    box-shadow: 0 0 11px 4px #9e7910;    
+    /*background-color: #debb5a;*/
+    box-shadow: 0 0 11px -2px #9e7910;    
+    
 }
 
 .etalageTitel{
@@ -100,10 +101,11 @@ footer{
 
 .broodjeVanDeDag{
     text-align: center;
-    border: 7px solid #e2b32f;
+    border: 7px solid #ea5e1bd4;
     border-radius: 30px;
     background-color: #debb5a;
-    box-shadow: 0 0 11px 4px #9e7910;
+    box-shadow: 0 0 11px -2px #9e7910;
+    background:url(img/Seamless-Wood-Texture.jpg) repeat;
 }
 
 .logo{
