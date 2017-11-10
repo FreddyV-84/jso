@@ -1,15 +1,16 @@
+body {
+    margin:0;
+    padding:0 10px;
+}
 #wrapper{
     margin: 0 auto;
     display:flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
+    min-height: 100vh;
     min-width: 320px;
     max-width: 1024px;
     margin: 0 auto;
-    padding: 10px 15px;
-    background-color: rgb(255, 212, 0);
-    border-left:7px dashed #ee721a;
-    border-right: 7px dashed #ee721a;
-
+    padding: 10px 0;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
@@ -17,40 +18,33 @@ header{
     box-sizing: border-box;
     padding: 10px;
     width: 100%;
-    order: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
     /* background-color: blue; */
     /* border: 2px solid black; */
 }
 
 main{
     box-sizing: border-box;
-    flex: 12 1 200px;
-    order:2;
     padding: 5px;
-    /* background-color: green; */
-    /* border: 2px solid black; */
+    flex:1 0 auto;
 }
 
 aside{
     box-sizing: border-box;
     padding: 5px;
-    flex: 1 0 auto;
-    order: 3;
-    /* background-color: darkgreen; */
-    /* border: 2px solid black; */
 }
 
 footer{
     box-sizing: border-box;
-    order: 4;
     padding: 5px;
     width: 100%;
-    border: 2px dashed #da7f0d;
+    border: 9px dashed #ffd713;
     border-radius: 10px;
-    margin-top: 10px;
     border-style: dashed;
-    /* background-color: yellow; */
-    /* border: 2px solid black; */
+    margin: 10px 0;
+    font-size:0.9em;
 }
 
 
@@ -59,13 +53,13 @@ footer{
     width: 200px;
     height: 200px;
     margin:10px;
-    border: 4px solid #ee721a;
+    border: 4px solid #ffd713;
     border-radius: 30px;
-    box-shadow: 2px 2px 5px 2px #ee721a52;
+    box-shadow: 4px 4px 2px 0px #000000;
 }
 
 .broodjeTitel{
-    font-size: 20px;
+    font-size: 1.1em;
     text-align: center;
     margin:0;
     margin-bottom: 25px;
@@ -74,52 +68,193 @@ footer{
 .broodjesEtalage{
     display:flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-around;
     box-sizing: border-box;
-    min-width: 320px;
-    max-width: 700px;
-    border: 7px solid #ea5e1bd4;
-    border-radius: 30px;
-    /*background-color: #debb5a;*/
-    box-shadow: 0 0 11px -2px #9e7910;    
-    
+    border: 11px solid #ffd713;
+    border-radius: 30px;  
 }
 
 .etalageTitel{
     width: 100%;
     text-align: center;
-    font-size: 32px;
+    font-size: 1.5em
 }
 
 .broodjeVanDeDagTitel{
     width: 100%;
     text-align: center;
     text-decoration: underline;
-    font-size: 32px;
-    color: #ff3300;
+    font-size: 1.5em;
+    color: #d80f0f;
 }
 
-.broodjeVanDeDag{
+.broodjeVanDeDag, .info{
     text-align: center;
-    border: 7px solid #ea5e1bd4;
-    border-radius: 30px;
-    background-color: #debb5a;
-    box-shadow: 0 0 11px -2px #9e7910;
-    background:url(img/Seamless-Wood-Texture.jpg) repeat;
+    border: 11px solid #ffd713;
+    border-radius: 30px;  
+    margin: 10px 0;
+    background-color: #54a5ad;
+}
+
+.info{
+    display: hidden;
+}
+
+.broodjeVanDeDag > .broodje{
+    width: 200px;
+    height: 200px;
+    margin-top:0;
 }
 
 .logo{
-    width: 350px;
-    vertical-align: middle; /* align links with the logo */
-    margin-bottom:18px; /* to further align the links with the logo */
+    height: 70px;
+    margin-left: 10px;
+    padding-right:15px;
+    padding-bottom:5px;
+    align-self: center;
 }
 
 nav
 {
     display: inline-block;
-    padding:10px;
+    padding:0;
 }
 
 a{
     margin: 0 10px;
+    color: #000;
+    text-decoration: none;
+    font-size: 1.3em;
+    display: block;
+    text-align: center;
+    border-radius: 7px;
+    margin: 5px 0;
+    padding: 10px 0;
+    background: #ffd713;
+}
+
+a:hover{
+    border-color: #116cb4;
+}
+
+@media screen and (min-width: 615px) {
+    nav{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-end;
+        padding: 0 10px;
+        margin-top: 30px;
+    }
+    
+    a{
+        display:inline-block;
+        border: none;
+        background: none;
+        color: #d80f0f;
+        border-radius: 30px;
+        padding-right: 16px;
+        box-shadow: 5px 4px 0px 1px #ffd814;
+    }
+    
+    a:hover{
+        color: #920a0c;
+    }
+
+    header{
+        flex-flow: row nowrap;
+    }
+
+    main{
+        display: flex;
+        flex-flow: row-reverse nowrap;
+        justify-content: space-around;
+    }
+
+    .broodjeVanDeDagTitel{
+        text-decoration: none;
+        color: #000000;
+        box-shadow: 14px 6px 0px -2px #0000004a;
+        padding-right: 38px;
+        padding-bottom: 2px;
+    }
+
+    body{
+        padding: 0 50px;
+    }
+
+    #wrapper{
+        padding:0 10px;
+        border-left:3px solid #ffd713;
+        border-right: 3px solid #ffd713;
+    }
+
+    .broodjesEtalage{
+        margin-top: -80px;
+        /* background-image:url(../img/wood.jpg);  */
+        border: 7px solid #ffd713;       
+    }
+
+    .broodjeVanDeDag, .info{
+        border: 7px solid #ffd713;
+    }
+
+    .etalageTitel{
+        font-size:2.5em;
+        margin-bottom:0;
+    }
+
+    .broodje{
+        width: 180px;
+        height: 180px;
+    }
+    aside{
+        margin: 0px 0px 0px 20px;
+    }
+    footer{
+        border: 3px dashed #ffd713;
+        text-align: right;
+    }
+
+    .logo{
+        align-self: flex-start;
+        margin-top:20px;
+    }
+    
+    .info{
+        display:inherit;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    header{
+        justify-content: flex-start;
+    }
+    
+    .logo{
+        flex:1;
+        box-shadow: 5px 4px 0px 1px #ffd814;
+        border-radius: 30px;
+    }
+    
+    nav{
+        flex:3;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        /* width:100%; */
+    }
+
+    .broodjesEtalage{
+        margin-top: 15px;
+    }
+
+    a{
+        margin-left: 20px;  
+        box-shadow: unset;
+        font-size: 1.6em;
+    }
+    
+    a:hover{
+        box-shadow: unset;
+        text-decoration: underline;
+    }
 }
