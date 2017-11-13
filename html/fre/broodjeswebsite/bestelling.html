@@ -4,23 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Broodjeszaak Smosderop</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Broodjeszaak Smosdorp</title>
 </head>
 
 <body>
     <div id="wrapper">
         <header>
-            Broodjeszaak Smosderop
+            <img src="img/smosdorp1.png" class="logo" alt="Broodjeszaak Smosdorp">
+            <nav>
+                <a href="index.html" class="menulink">Broodjes</a>
+                <a href="overOns.html" class="menulink">Over ons</a>
+                <a href="contact.html" class="menulink">Contact</a>
+            </nav>
         </header>
         <main>
-            main
+            <aside>
+                <div class="broodjeVanDeDag">
+                    <p class="broodjeVanDeDagTitel">Broodje van de dag</p>
+                    <img src="img/Ardenne.jpg" class="broodje" alt="Ardenne">
+                    <p class="broodjeTitel">Ardenne</p>
+                </div>
+                <div class="info">
+                    <p class="broodjeVanDeDagTitel">Combi Ontbijt</p>
+                    <img src="img/combi.jpg" class="broodje" alt="Combi ontbijt: koffie en croissant">
+                    <p class="broodjeTitel">Koffie & Croissant</p>
+                </div>
+            </aside>
+            <form class="frmBestellingen" method="get">
+                <select name="lstBroodjes" id="lstBroodjes" size="10">
+                    <option value="boulet">Boulet</option>
+                    <option value="martino">Martino</option>
+                    <option value="kipCurry">Kip curry</option>
+                    <option value="kip">kip</option>
+                    <option value="zalm">Zalm</option>
+                    <option value="martino">Martino</option>
+                    <option value="ardenne">Ardenne</option>
+                    <option value="kip">kip</option>
+                </select>
+                <input type="radio" name="witBruin" id="rdoWit" value="wit">
+                <label for="rdoWit">wit</label>
+                <input type="radio" name="witBruin" id="rdoBruin" value="bruin">
+                <label for="rdoBruin">bruin</label>
+                <input type="checkbox" name="chkSmos" id="chkSmos" value="smos">
+                <label for="chkSmos">smos</label>
+            </form>
+
         </main>
-        <aside>
-            aside
-        </aside>
         <footer>
-            footer
+            Contact: smosdorp@gmail.com Tel: 02 93 32 39
         </footer>
     </div>
 </body>
