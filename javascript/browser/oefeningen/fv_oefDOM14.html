@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            display: flex;
+            flex-flow: column nowrap;
+            width: 360px;
+        }
+
+        .frmRow {
+            flex: 1 1 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="frm">
+        <div class="frmRow">
+            <label for="chk1">check1</label>
+            <input type="checkbox" name="chk1" id="chk1">
+            <label for="chk2">check2</label>
+            <input type="checkbox" name="chk2" id="chk2" checked>
+            <label for="chk3">check3</label>
+            <input type="checkbox" name="chk3" id="chk3">
+            <label for="chk4">check4</label>
+            <input type="checkbox" name="chk4" id="chk4">
+            <label for="chk5">check5</label>
+            <input type="checkbox" name="chk5" id="chk5">
+        </div>
+
+        <div class="frmRow">
+            <label for="rdoMale">Man</label>
+            <input type="radio" name="rdoGender" id="rdoMale" value="Male" checked>
+            <label for="rdoFemale">Vrouw</label>
+            <input type="radio" name="rdoGender" id="rdoFemale" value="Female">
+        </div>
+
+        <div class="frmRow">
+            <select name="lstComposers" id="lstComposers">
+                <option value="composer1">Bach</option>
+                <option value="composer2">Beethoven</option>
+                <option value="composer3">Dvorjak</option>
+            </select>
+        </div>
+
+        <div class="frmRow">
+            <input type="button" value="check it" id="btnCheckAll">
+        </div>
+    </form>
+</body>
+<script>
+    window.onload = pageLoadEventHandler;
+
+    function pageLoadEventHandler() {
+        document.getElementById("btnCheckAll").addEventListener("click", checkAll);
+    }
+
+    function checkAll() {
+        var frm = document.getElementById("frm");
+        for (var element = 0; element < frm.elements.length; element++) {
+            // console.log("type: " + frm.elements[element].type + ", value: " + frm.elements[element].value +
+            //     ", checked: " + frm.elements[element].checked);
+            if (frm.elements[element].type == "checkbox") {
+                frm.elements[element].checked = true;
+            }
+        }
+    }
+</script>
+
+</html>
