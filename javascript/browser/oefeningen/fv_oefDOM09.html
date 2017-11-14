@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fv_oefDOM09</title>
+    <style>
+        body {
+            background-color: #565B40;
+        }
+
+        #wrapper {
+            width: 870px;
+            margin: 0 auto;
+        }
+
+        form {
+            margin-top: 60px;
+        }
+
+        #speelVeld {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+        }
+
+        #btnStart {
+            margin-left: 501px;
+        }
+
+        #finishBadge {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 450px;
+            background: linear-gradient(45deg, #9CAA61, #D1D8B3);
+            border: 10px solid #abb778;
+            border-radius: 150px;
+            height: 100px;
+            width: 100px;
+            line-height: 100px;
+            font-size: 120px;
+            padding: 80px;
+            box-shadow: 5px 6px 0px 2px #4a4a42;
+        }
+
+        #finishBadgeLabel {
+            display: none;
+            position: absolute;
+            top: 302px;
+            left: 387px;
+            color: rgb(139, 9, 9);
+            font-size: 136px;
+            font-family: fantasy;
+            color: rgb(187, 30, 30);
+            text-shadow: 5px 6px 0px #4a4a42;
+        }
+
+
+        .vakje {
+            display: inline-flex;
+            flex-flow: row wrap;
+            align-items: center;
+            background-color: #9CAA61;
+            border: 5px solid #4a4a42;
+            border-radius: 30px;
+            width: 80px;
+            height: 80px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .startVakje {
+            background-color: #D1D8B3;
+            border-radius: 60px;
+            width: 80px;
+            height: 80px;
+        }
+
+        .rabbit {
+            font-size: 30px;
+            width: 100%;
+            height: 45%;
+        }
+
+        .turtle {
+            font-size: 30px;
+            width: 100%;
+            height: 45%;
+        }
+
+        .bubbleTurtle {
+            position: relative;
+            display: none;
+            font-size: 29px;
+            color: #1e3105;
+            font-family: fantasy;
+            top: -89px;
+            left: -2px;
+            width: 190px;
+            height: 35px;
+            padding: 0px;
+            background: #e4cc3e;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            border: #51514F solid 3px;
+        }
+
+        .bubbleTurtle:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 15px 8px 0;
+            border-color: #e4cc3e transparent;
+            display: block;
+            width: 0;
+            z-index: 1;
+            bottom: -15px;
+            left: 28px;
+        }
+
+        .bubbleTurtle:before {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 17px 10px 0;
+            border-color: #51514F transparent;
+            display: block;
+            width: 0;
+            z-index: 0;
+            bottom: -20px;
+            left: 26px;
+        }
+
+        .bubbleRabbit {
+            display: none;
+            position: relative;
+            font-size: 29px;
+            color: #1e3105;
+            font-family: fantasy;
+            top: 7px;
+            left: -12px;
+            width: 190px;
+            height: 35px;
+            padding: 0px;
+            background: #6a95d0;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            border: #51514F solid 3px;
+        }
+
+        .bubbleRabbit:after {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 0 8px 15px;
+            border-color: #6a95d0 transparent;
+            display: block;
+            width: 0;
+            z-index: 1;
+            top: -15px;
+            left: 28px;
+        }
+
+        .bubbleRabbit:before {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 0 10px 17px;
+            border-color: #51514F transparent;
+            display: block;
+            width: 0;
+            z-index: 0;
+            top: -20px;
+            left: 26px;
+        }
+
+        #background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(395deg, #d6bc40, #498450);
+            background-size: 100%;
+            opacity: 0.93;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="background"></div>
+    <div id="wrapper">
+        <div id="finishBadge">🐢</div>
+        <div id="finishBadgeLabel">Winner</div>
+        <form>
+            <div class="rabbit" id="rabbit">🐇
+                <span class="bubbleRabbit" id="bubbleRabbit"></span>
+            </div>
+            <div class="turtle" id="turtle">🐢
+                <span class="bubbleTurtle" id="bubbleTurtle"></span>
+            </div>
+            <div class="vakje startVakje" id="vakje0"></div>
+            <input type="button" id="btnStart" value="Start de race">
+            <div id="speelVeld"></div>
+        </form>
+    </div>
+
+</body>
+<script>
+    window.onload = pageLoadEventHandler;
+    var turtlePos = 0;
+    var rabbitPos = 0;
+    var rabbitTalking = false;
+    var turtleTalking = false;
+    var rabbitTimer, turtleTimer;
+    var race;
+
+    function pageLoadEventHandler() {
+        genereerVakjes();
+        moveTurtle(turtlePos);
+        moveRabbit(rabbitPos);
+        // turtleTalk("hopakeuh", 500000);
+        // rabbitTalk("ja zenne", 500000);
+        document.getElementById("btnStart").addEventListener("click", startRace);
+    }
+
+    function startRace() {
+        race = setInterval(movePlayers, 1000);
+    }
+
+    function movePlayers() {
+        turtlePos += getTurtleMoves();
+        rabbitPos += getRabbitMoves();
+        if (turtlePos < 0)
+            turtlePos = 0;
+        if (rabbitPos < 0)
+            rabbitPos = 0;
+        if (turtlePos > 70)
+            turtlePos = 70;
+        if (rabbitPos > 70)
+            rabbitPos = 70;
+
+        moveTurtle(turtlePos);
+        moveRabbit(rabbitPos);
+
+        if (rabbitPos > turtlePos) {
+            var rabbitVoorsprong = rabbitPos - turtlePos;
+            switch (true) {
+                case rabbitVoorsprong <= 3:
+                    rabbitTalk("hupakeeeuh", 1000);
+                    break;
+                case rabbitVoorsprong <= 6:
+                    rabbitTalk("kzen weg hé", 1000);
+                    break;
+                case rabbitVoorsprong <= 9:
+                    rabbitTalk("héhé", 1000);
+                    break;
+                case rabbitVoorsprong <= 12:
+                    rabbitTalk("das ver zenne", 1000);
+                    break;
+            }
+        }
+
+        if (turtlePos > rabbitPos) {
+            var turtleVoorsprong = turtlePos - rabbitPos;
+            switch (true) {
+                case turtleVoorsprong <= 3:
+                    turtleTalk("haha", 1000);
+                    break;
+                case turtleVoorsprong <= 6:
+                    turtleTalk("hohohoooo", 1000);
+                    break;
+                case turtleVoorsprong <= 9:
+                    turtleTalk("waar zedde?", 1000);
+                    break;
+                case turtleVoorsprong <= 12:
+                    turtleTalk("vetzakske", 1000);
+                    break;
+            }
+        }
+
+        if (turtlePos == rabbitPos) {
+            rabbitTalk("elaba", 1000);
+            turtleTalk("grrrr", 1000);
+        }
+
+        // FINISHER
+        if (turtlePos == 70 || rabbitPos == 70) {
+            var finishBadge = document.getElementById("finishBadge");
+            var finishBadgeLabel = document.getElementById("finishBadgeLabel");
+            clearInterval(race);
+            if (turtlePos == 70) {
+                turtleTalk("'t is gebeurd'", 5000);
+                finishBadge.innerHTML = "🐢";
+            }
+            if (rabbitPos == 70) {
+                rabbitTalk("'k zen der", 5000);
+                finishBadge.innerHTML = "🐇";
+            }
+            finishBadge.style.display = "block";
+            finishBadgeLabel.style.display = "block";
+            document.getElementById("background").style.display = "block";
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function turtleTalk(comment, duration) {
+        //if (!turtleTalking) {
+        //  turtleTalking = true;
+        var bubble = document.getElementById("bubbleTurtle");
+        bubble.innerHTML = comment;
+        bubble.style.display = "block";
+        clearTimeout(turtleTimer);
+        turtleTimer = setTimeout(function () {
+            bubble.style.display = "none";
+            turtleTalking = false;
+        }, duration);
+        //}
+    }
+
+    function rabbitTalk(comment, duration) {
+        //if (!rabbitTalking) {
+        //rabbitTalking = true;
+        var bubble = document.getElementById("bubbleRabbit");
+        bubble.innerHTML = comment;
+        bubble.style.display = "block";
+        clearTimeout(rabbitTimer);
+        rabbitTimer = setTimeout(function () {
+            bubble.style.display = "none";
+            rabbitTalking = false;
+        }, duration);
+        //}
+    }
+
+    function getTurtleMoves() {
+        var x = getRandom(1, 10);
+        switch (true) {
+            case x >= 1 && x <= 5:
+                moves = 3;
+                break;
+            case x >= 6 && x <= 7:
+                moves = -6;
+                break;
+            case x >= 8 && x <= 10:
+                moves = 1;
+                break;
+        }
+        return moves;
+    }
+
+    function getRabbitMoves() {
+        var x = getRandom(1, 10);
+        switch (true) {
+            case x >= 1 && x <= 2:
+                moves = 0;
+                break;
+            case x >= 3 && x <= 4:
+                moves = 9;
+                break;
+            case x == 5:
+                moves = -12;
+                break;
+            case x >= 6 && x <= 8:
+                moves = 1;
+                break;
+            case x >= 9 && x <= 10:
+                moves = -2;
+                break;
+        }
+        return moves;
+    }
+
+    function moveTurtle(positie) {
+        document.getElementById("vakje" + positie).childNodes.length = 0;
+        document.getElementById("vakje" + positie).appendChild(document.getElementById("turtle"));
+
+    }
+
+    function moveRabbit(positie) {
+        document.getElementById("vakje" + positie).childNodes.length = 0;
+        document.getElementById("vakje" + positie).appendChild(document.getElementById("rabbit"));
+
+    }
+
+    function genereerVakjes() {
+        var speelVeld = document.getElementById("speelVeld");
+        for (var i = 1; i <= 70; i++) {
+            speelVeld.innerHTML += "<div class = 'vakje' id='vakje" + i + "'></div>";
+        }
+    }
+
+    function getRandom(min, max) {
+        //return Math.random(); // gives you an uniform distribution of numbers 
+        // => not ideal for distribution on a long scale
+        min--;
+        return Math.floor(Math.exp(Math.random() * Math.log(max - min + 1))) + min;
+    }
+</script>
+
+</html>

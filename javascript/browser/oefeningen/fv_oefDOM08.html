@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fv_oefDOM09</title>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="naam1" name="naam1">
+        <input type="text" id="naam2" name="naam2">
+        <input type="text" id="naam3" name="naam3">
+        <input type="text" id="naam4" name="naam4">
+        <input type="text" id="naam5" name="naam5">
+        <input type="button" id="btnSort" value="Sorteer">
+        <div id="result"></div>
+    </form>
+</body>
+<script>
+    window.onload = pageLoadEventHandler;
+
+    function pageLoadEventHandler() {
+        document.getElementById("btnSort").addEventListener("click", btnSortOnClick);
+    }
+
+    function btnSortOnClick() {
+        var namen = [];
+        namen.push(document.getElementById("naam1").value);
+        namen.push(document.getElementById("naam2").value);
+        namen.push(document.getElementById("naam3").value);
+        namen.push(document.getElementById("naam4").value);
+        namen.push(document.getElementById("naam5").value);
+        document.getElementById("result").innerHTML = namen.sort().toString();
+    }
+</script>
+
+</html>

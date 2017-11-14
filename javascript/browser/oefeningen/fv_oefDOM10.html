@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rekenmachine</title>
+    <style>
+        body {
+            background-color: #2A3A49;
+            color: #CDE3F7;
+        }
+
+        form {
+            margin: 0 auto;
+            display: flex;
+            flex-flow: column nowrap;
+            width: 150px;
+            font-size: 12px;
+            border: 2px solid #839AAF;
+            padding: 10px;
+        }
+
+        fieldset {
+            border: 2px solid #839AAF;
+            margin-bottom: 5px;
+        }
+
+        .labelInput {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-end;
+        }
+
+        .labelInput>input {
+            flex: 1 0 50px;
+        }
+
+        .labelInput>label {
+            flex: 1 0 20px;
+        }
+
+        #btnCalculate {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="get">
+
+        <div class="labelInput">
+            <label for="txtNumber1">getal 1</label>
+            <input type="text" id="txtNumber1">
+        </div>
+        <fieldset>
+            <legend>Bewerking</legend>
+            <input type="radio" name="operation" value="addition" checked>
+            <label for="addition">+</label>
+            <input type="radio" name="operation" value="subtraction">
+            <label for="subtraction">-</label>
+            <input type="radio" name="operation" value="multiplication">
+            <label for="multiplication">*</label>
+            <input type="radio" name="operation" value="division">
+            <label for="division">/</label>
+        </fieldset>
+        <div class="labelInput">
+            <label for="txtNumber2">getal 2</label>
+            <input type="text" id="txtNumber2">
+        </div>
+        <input type="button" id="btnCalculate" value="=">
+        <input type="text" id="txtResult">
+    </form>
+</body>
+<script>
+    window.onload = pageLoadEventHandler;
+
+    function pageLoadEventHandler() {
+        document.getElementById("btnCalculate").onclick = calculate;
+    }
+
+    function calculate() {
+        var getal1 = parseFloat(document.getElementById("txtNumber1").value);
+        var getal2 = parseFloat(document.getElementById("txtNumber2").value);
+        var result = document.getElementById("txtResult");
+        var operaties = document.getElementsByName("operation");
+        if (operaties[0].checked) {
+            result.value = (getal1 + getal2).toFixed(2);
+        }
+        if (operaties[1].checked) {
+            result.value = (getal1 - getal2).toFixed(2);
+        }
+        if (operaties[2].checked) {
+            result.value = (getal1 * getal2).toFixed(2);
+        }
+        if (operaties[3].checked) {
+            result.value = (getal1 / getal2).ToFixed(2);
+        }
+
+
+
+    }
+</script>
+
+</html>

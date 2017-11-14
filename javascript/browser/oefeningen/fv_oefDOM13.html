@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select</title>
+    <style>
+        body {
+            background-color: #3E5B57;
+            margin: 30px;
+        }
+
+        input,
+        select {
+            background-color: #8AB0AB;
+            margin: 5px;
+        }
+
+        label {
+            margin: 5px;
+            text-decoration: underline;
+        }
+
+        form {
+            margin: 0 auto;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            width: 380px;
+            border: 2px solid #243F3C;
+            padding: 10px;
+        }
+
+        #btnAdd,
+        #btnRemove {
+            width: 100%;
+        }
+
+        #txtName {
+            width: 80%;
+        }
+
+        .nameBoxes {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        select {
+            flex: 1 0 100px;
+        }
+
+        .buttons {
+            display: inline-flex;
+            flex-flow: column nowrap;
+            justify-content: center;
+            flex: 0 0 auto;
+        }
+
+        .buttons>input {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="get" id="frm" onsubmit="return false;">
+        <label for="naam">Naam</label>
+        <input type="text" name="txtName" id="txtName">
+        <input type="button" value="Toevoegen" id="btnAdd">
+        <input type="button" value="Verwijderen" id="btnRemove">
+
+        <div class="nameBoxes">
+            <select size="10" name="nameBox1" id="nameBox1">
+                <option>Jan</option>
+                <option>Piet</option>
+            </select>
+            <div class="buttons">
+                <input type="button" id="btnMoveRight" value=">>">
+                <input type="button" id="btnMoveLeft" value="<<">
+            </div>
+            <select size="10" name="nameBox2" id="nameBox2">
+                <option>Joris</option>
+                <option>Corneel</option>
+            </select>
+        </div>
+
+    </form>
+</body>
+<script>
+    window.onload = pageLoadEventHandler;
+
+    function pageLoadEventHandler() {
+        document.getElementById("btnAdd").onclick = addName;
+        document.getElementById("btnRemove").onclick = removeName;
+        document.getElementById("btnMoveRight").onclick = moveRight;
+        document.getElementById("btnMoveLeft").onclick = moveLeft;
+    }
+
+    function moveRight() {
+        var nameBox1 = document.getElementById("nameBox1");
+        var nameBox2 = document.getElementById("nameBox2");
+        if (nameBox1.selectedIndex != -1) {
+
+            var selected = nameBox1.selectedIndex;
+
+            // var tmp = document.createElement("option");
+            // tmp.text = nameBox1.options[selected].value;
+            // nameBox2.add(tmp);
+
+            // nameBox1.remove(selected);
+
+            var option = nameBox1.options[selected];
+            nameBox2.add(option);
+        }
+    }
+
+    function moveLeft() {
+        var nameBox1 = document.getElementById("nameBox1");
+        var nameBox2 = document.getElementById("nameBox2");
+        if (nameBox2.selectedIndex != -1) {
+
+            var selected = nameBox2.selectedIndex;
+
+            var tmp = document.createElement("option");
+            tmp.text = nameBox2.options[selected].value;
+            nameBox1.add(tmp);
+
+            nameBox2.remove(selected);
+        }
+    }
+
+    function addName() {
+        var txtName = document.getElementById("txtName");
+        if (txtName.value.length > 0) {
+
+
+            var nameBox1 = document.getElementById("nameBox1");
+
+            var newName = document.createElement("option");
+            newName.text = txtName.value;
+
+            nameBox1.add(newName);
+            txtName.value = "";
+            txtName.focus();
+        }
+    }
+
+    function removeName() {
+        var nameBox1 = document.getElementById("nameBox1");
+        var nameBox2 = document.getElementById("nameBox2");
+
+        if (nameBox1.selectedIndex != -1) {
+            nameBox1.remove(nameBox1.selectedIndex);
+        }
+
+        if (nameBox2.selectedIndex != -1) {
+            nameBox2.remove(nameBox2.selectedIndex);
+        }
+    }
+</script>
+
+</html>
