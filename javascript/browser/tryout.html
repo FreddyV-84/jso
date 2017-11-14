@@ -52,6 +52,10 @@
     }
     function init(){
         frm.btn.onclick = test;
+
+        // !!!  document.write gebruiken nadat DOM-tree volledig opgebouwd is,
+        // overschrijft DOM-tree !!!
+        // document.write("zeg maar dag tegen de rest van de DOM-tree ...");
     }
     window.onload = init;
 </script>
