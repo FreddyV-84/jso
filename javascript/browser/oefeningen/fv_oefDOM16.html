@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fv_oefDOM16</title>
+    <style>
+        #frm {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+
+        .frmRow {
+            flex: 1 0 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="frm">
+        <div class="frmRow">
+            <label for="lan--en">English</label>
+            <input type="radio" name="lan" id="lan--en" checked>
+            <label for="lan--nl">Nederlands</label>
+            <input type="radio" name="lan" id="lan--nl">
+        </div>
+        <select name="font-size" id="lst--font-size" class="frmRow">
+            <option value=""></option>
+        </select>
+        <p id="txt"></p>
+        <input type="submit" id="btnSubmit">
+    </form>
+</body>
+<script>
+    window.onload = pageLoadEventHandler;
+
+    function pageLoadEventHandler() {
+        document.getElementById("lan--en").addEventListener("change", fillSelect);
+        document.getElementById("lan--nl").addEventListener("change", fillSelect);
+        document.getElementById("lst--font-size").addEventListener("change", changeFontSize);
+        fillSelect();
+    }
+
+    function fillSelect() {
+        var sizes = ["xx-small", "x-small", "small", "medium", "large", "x-large", "xx-large"];
+        var sizesEnglishNames = ["extra extra small", "extra small", "small", "medium", "large", "extra large",
+            "extra extra large"
+        ];
+        var sizesDutchNames = ["extra extra klein", "extra klein", "klein", "medium", "groot", "extra groot",
+            "extra extra groot"
+        ];
+        var lst = document.getElementById("lst--font-size");
+        var lanEnChecked = document.getElementById("lan--en").checked;
+
+        var opt = null;
+
+        for (var i = 0; i < lst.length; i++) {
+            lst.remove(i);
+        }
+
+        for (var i = 0; i < sizes.length; i++) {
+            opt = document.createElement("option");
+            if (lanEnChecked) {
+                opt.text = sizesEnglishNames[i];
+                console.log("lan--en");
+            } else {
+                opt.text = sizesDutchNames[i];
+                console.log("lan--nl");
+            }
+            opt.value = sizes[i];
+            lst.add(opt);
+        }
+
+        if (lanEnChecked) {
+            document.getElementById("txt").innerHTML = "This is a text";
+        } else {
+            document.getElementById("txt").innerHTML = "Dit is een tekst";
+        }
+
+        changeFontSize();
+    }
+
+    function changeFontSize() {
+        document.getElementById("txt").style.fontSize = document.getElementById("lst--font-size").value;
+    }
+</script>
+
+</html>
