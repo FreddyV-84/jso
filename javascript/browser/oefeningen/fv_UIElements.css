@@ -1,0 +1,26 @@
+/* 
+
+background-color: #3E5B57
+text-color: #03110F
+element-color: #8AB0AB
+
+#243F3C
+#191C1B
+*/
+
+html,
+body {
+    background-color: #3E5B57;
+}
+
+form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+.select {
+    width: 150px;
+    color: #03110F;
+    background-color: #8AB0AB;
+}

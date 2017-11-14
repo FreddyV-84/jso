@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: flex-end;
+            width: 200px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .frmRow {
+            flex: 1 1 auto;
+        }
+
+        .warning {
+            display: hidden;
+            color: rgb(255, 136, 0);
+            font-size: 0.7em;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="frm" action="http://www.google.be/search" method="get">
+        <div class="frmRow">
+            <label for="age">Leeftijd</label>
+            <input type="text" name="age" id="age">
+            <span class="warning" id="warningAge"></span>
+        </div>
+        <div class="frmRow">
+            <label for="txtSearch">Zoek</label>
+            <input type="text" name="q" id="txtSearch">
+            <span class="warning" id="warningSearch"></span>
+        </div>
+        <div class="frmRow">
+            <input type="submit" value="zoek" id="btnSearch">
+        </div>
+    </form>
+</body>
+<script>
+    window.onload = pageLoadEventHandler;
+
+    function pageLoadEventHandler() {
+        document.getElementById("frm").onsubmit = search;
+    }
+
+    function clearWarnings() {
+        document.getElementById("warningSearch").style.display = "none";
+        document.getElementById("warningAge").style.display = "none";
+    }
+
+    function search() {
+        clearWarnings();
+        return validateForm();
+    }
+
+    function validateForm() {
+        var validated = true;
+        var q = document.getElementById("txtSearch");
+        var age = document.getElementById("age");
+        var warningSearch = document.getElementById("warningSearch");
+        var warningAge = document.getElementById("warningAge");
+
+
+        if (q.value == "") {
+            warningSearch.innerHTML = "Geef in wat u wil zoeken";
+            warningSearch.style.display = "inline";
+            warningSearch.style.border = "1px solid orange";
+            warningSearch.style.borderBottomRightRadius = "30px";
+            warningSearch.style.borderTopRightRadius = "30px";
+
+            validated = false;
+
+        }
+
+        if (age.value == "") {
+            warningAge.innerHTML = "Geef een leeftijd in";
+            warningAge.style.display = "inline";
+            validated = false;
+        } else if (isNaN(age.value)) {
+            warningAge.innerHTML = "Geef een cijfer in";
+            warningAge.style.display = "inline";
+            validated = false;
+        } else if (age.value < 18) {
+            warningAge.innerHTML = "U bent te jong";
+            warningAge.style.display = "inline";
+            validated = false;
+        }
+
+        return validated;
+    }
+</script>
+
+</html>
