@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>progress bar</title>
+</head>
+
+<body>
+	<input type="button" value="execute" id="execute">
+	<div id="bar"></div>
+	<div id="blokBarContainer"></div>
+</body>
+<script>
+	'use strict';
+	var bar, blokBarContainer, blokBar;
+
+	window.onload = function () {
+		document.getElementById("execute").onclick = startProgress;
+		bar = document.getElementById("bar");
+		bar.style.backgroundColor = "#84a6bf";
+		bar.style.width = "0%";
+		bar.style.height = "20px";
+
+		blokBarContainer = document.getElementById("blokBarContainer");
+		blokBarContainer.style.border = "1px solid #000";
+		blokBarContainer.style.width = "300px";
+		blokBarContainer.style.height = "20px";
+		blokBarContainer.style.padding = "0";
+	};
+
+	function startProgress() {
+		document.getElementById("execute").disabled = true;
+		var percent = 0,
+			steps = 0;
+
+		while (blokBarContainer.firstChild) {
+			blokBarContainer.removeChild(blokBarContainer.firstChild);
+		}
+
+		var tmrProgress = setInterval(function () {
+			console.log(percent);
+			percent < 100 ? bar.style.width = ++percent + "%" : clearInterval(tmrProgress);
+
+			if (steps < 300) {
+				steps += 10;
+				var blok = document.createElement("div");
+				blok.style.backgroundColor = "#84a6bf";
+				blok.style.width = "8px";
+				blok.style.height = "20px";
+				blok.style.marginLeft = "0px";
+				blok.style.display = "inline-block";
+				blok.style.marginRight = "2px";
+				if (steps > 290) {
+					blok.style.marginRight = "0px";
+					blok.style.width = "10px";
+				}
+
+				blokBarContainer.appendChild(blok);
+			}
+
+			if(percent >= 100){
+				document.getElementById("execute").disabled = false;
+			}
+		}, 10);
+	}
+</script>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tijd</title>
+</head>
+
+<body>
+	<input type="button" value="freeze" id="btnToggle">
+</body>
+<script>
+	var timer = null;
+
+	window.onload = function () {
+		document.getElementById("btnToggle").addEventListener("click", toggleTime);
+		startTime();
+	};
+
+	function toggleTime() {
+		if (timer != null) {
+			document.getElementById("btnToggle").value = "continue";
+			stopTime();
+		} else {
+			document.getElementById("btnToggle").value = "freeze";
+			startTime();
+		}
+	}
+
+	function startTime() {
+		console.log("start..." + timer);
+		timer = setInterval(flicker, 500);
+		console.log("start...	..." + timer);
+	}
+
+	function stopTime() {
+		console.log("stop..." + timer);
+		if (timer != null) {
+			clearInterval(timer);
+			timer = null;
+		}
+		console.log("stop...	..." + timer);
+	}
+
+	function flicker() {
+		var body = document.getElementsByTagName("body")[0];
+
+		var r = Math.floor((Math.random() * 255)).toFixed(0);
+		var g = Math.floor((Math.random() * 255)).toFixed(0);
+		var b = Math.floor((Math.random() * 255)).toFixed(0);
+		body.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
+	}
+</script>
+
+</html>

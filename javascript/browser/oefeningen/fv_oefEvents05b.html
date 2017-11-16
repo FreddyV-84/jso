@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>flicker</title>
+</head>
+<body>
+</body>
+<script>
+	window.onload = function(){
+		setTimeout(flicker, 1000);
+	}
+
+	function flicker(){
+		if(confirm("Start Freak Show?")){
+			var body = document.getElementsByTagName("body")[0];
+			setInterval(function(){
+				var r = Math.floor((Math.random() * 255)).toFixed(0);
+				var g = Math.floor((Math.random() * 255)).toFixed(0);
+				var b = Math.floor((Math.random() * 255)).toFixed(0);
+				body.style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
+			}, 100);
+		}
+	}
+</script>
+</html>

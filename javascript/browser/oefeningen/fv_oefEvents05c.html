@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>events05c</title>
+</head>
+
+<body>
+	<input type="button" value="stop">
+</body>
+<script>
+	var alertRef;
+	window.onload = function () {
+		window.document.getElementsByTagName("input")[0].onclick = stop;
+	};
+
+	function stop() {
+		var teller = 5;
+		setInterval(function () {
+			document.close();
+			document.write(teller--);
+		}, 1000);
+		setTimeout(function () {
+			window.close();
+		}, 5000);
+	}
+</script>
+
+</html>
