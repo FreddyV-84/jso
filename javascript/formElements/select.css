@@ -1,0 +1,38 @@
+/* COLORS */
+
+
+/* Background Color  */
+
+
+/* Element Color     */
+
+
+/* Border Color      */
+
+
+/* Text Color        */
+
+html,
+body {
+    background-color: #082A30;
+}
+
+form {
+    width: 200px;
+    background-color: #2F5D66;
+    border: 1px solid #000;
+    border-radius:0 0 10px 0;
+    padding: 15px;
+    padding-bottom: 20px;
+}
+
+fieldset {
+    border: 1px solid #000;
+}
+
+.classColors {
+    background-color: #A1B6BA;
+    border: 1px solid #000;
+    /* outline: 1px solid blue; */
+    width: 100%;
+}

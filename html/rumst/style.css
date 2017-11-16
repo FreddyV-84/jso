@@ -1,0 +1,219 @@
+body {
+    /* background-color: #bbb; */
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 1.6em;
+    line-height: 1.65em;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #666;
+}
+
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.logoWrapper {
+    flex: 1 1 20%;
+}
+
+.logo {
+    max-height: 95px;
+    /* max-width: 100%;
+    height: auto; */
+    margin: 0;
+}
+
+.search {
+    flex: 1 0 70%;
+    margin: 0;
+    background-color: #aa1a47;
+    color: #FFF;
+    min-height: 95px;
+    text-align: right;
+    padding: 34px 15px 0 0;
+    font-size: 18px;
+}
+
+.search::before {
+    content: "\f002";
+    font-family: "FontAwesome";
+    font-size: 1.4rem;
+    line-height: 2.0999999999999996rem;
+}
+
+.contactHours {
+    flex: 0 0 10%;
+    margin: 0;
+    background-color: #1a68aa;
+    color: #FFF;
+    min-height: 95px;
+    text-align: center;
+    padding: 34px 15px 0 0;
+    font-size: 16px;
+}
+
+nav {
+    background-color: #fffbf0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 15px;
+    position: relative;
+    z-index: 333333;
+    font-size: 1.6rem;
+    line-height: 2.4000000000000004rem;
+}
+
+nav>ul {
+    list-style-type: none;
+}
+
+main {
+    background-color: #FFF;
+}
+
+h1>span {
+    font-family: carnasbold, Arial, Helvetica, sans-serif;
+    color: #333;
+    font-size: 28px;
+    line-height: 36.4px;
+    font-weight: 400;
+}
+
+.map {
+    color: #aa1a47;
+}
+
+.map::before {
+    content: "\f041";
+    font-family: FontAwesome;
+    margin-right: .5em;
+    font-size: 1.4rem;
+    line-height: 2.0999999999999996rem;
+}
+
+p {
+    margin: 0 0 .5em;
+}
+
+h2 {
+    font-size: 21px;
+    font-weight: 400;
+    font-family: carnasmedium, Arial, Helvetica, sans-serif;
+    line-height: 31.5px;
+    margin: 0 0 10.5px;
+    padding: 0;
+}
+
+.moreinfo {
+    margin-bottom: 16px;
+}
+
+.twitter {
+    background-color: #4099ff;
+    color: #fff;
+    outline: 0;
+    float: left;
+    margin: 0 1em .5em 0;
+    padding: .25em .75em!important;
+    text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.twitter:hover {
+    background-color: #f47321;
+    color: #fff;
+    text-decoration: none;
+}
+
+.twitter>span {
+    margin-left: .25em;
+}
+
+.twitter::before {
+    content: "\f099";
+    font-family: FontAwesome;
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+.facebook {
+    background-color: #3d62b3;
+    color: #fff;
+    outline: 0;
+    float: left;
+    margin: 0 1em .5em 0;
+    padding: .25em .75em!important;
+    text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.facebook:hover {
+    background-color: #f47321;
+    color: #fff;
+    text-decoration: none;
+}
+
+.facebook::before {
+    content: "\f09a";
+    font-family: FontAwesome;
+    font-size: 2rem;
+    line-height: 3rem;
+}
+
+.huisje {
+    width: 330px;
+    height: 248px;
+}
+
+#contact {
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding: 1em;
+    background-color: #fef3ec;
+}
+
+dd::before {
+    content: "\f015";
+    font-family: FontAwesome;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    margin-right: .75em;
+    width: 1.25em;
+    text-align: center;
+    left: 0;
+    top: .15em;
+}
+
+#footerImage {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+footer {
+    font-family: carnasregular, Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    line-height: 2.0999999999999996rem;
+    color: #fff;
+    height: 145px;
+    background: url(https://www.rumst.be/Images/default/bg/bg_footercont.png) repeat-x;
+}
+
+.footerText {
+    width: 82%;
+    float: left;
+    padding: .75em 0 .25em;
+    margin-top: 108px;
+    margin-left: 3%;
+}

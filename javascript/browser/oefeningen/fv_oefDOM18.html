@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body, html {
+			height: 100vh;
+			background: linear-gradient(45deg, #d3ffb6, #447f7e);
+		}
+
+		#sticky {
+			display: flex;
+			flex-flow: column nowrap;
+			position: absolute;
+			padding-left: 10px;
+		}
+
+		.bubble {
+			position: relative;
+			width: 50px;
+			height: 38px;
+			padding: 5px;
+			background: #D3FFB6;
+			-webkit-border-radius: 14px;
+			-moz-border-radius: 14px;
+			border-radius: 14px;
+			border: #447F7F solid 3px;
+		}
+	</style>
+</head>
+
+<body>
+	<p id="sticky" class="bubble"></p>
+</body>
+<script>
+	window.onload = function () {
+		document.getElementById("sticky").style.display = "none";
+
+		document.onclick = function () {
+			var sticky = document.getElementById("sticky");
+			sticky.style.display = "flex";
+		};
+		document.ondblclick = function () {
+			document.getElementById("sticky").style.display = "none";
+		};
+		document.onmousemove = stickLabel;
+	};
+
+	function stickLabel(e) {
+		e = e || window.event;
+
+		var sticky = document.getElementById("sticky");
+		sticky.innerHTML = "<span>x: " + e.pageX + "</span><span>y: " + e.pageY + "</span>";
+		sticky.style.left = e.pageX + "px";
+		sticky.style.top = e.pageY + "px";
+	}
+</script>
+
+</html>

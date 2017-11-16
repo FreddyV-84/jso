@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lose focus</title>
+</head>
+
+<body>
+    <form action="#">
+        <input type="text">
+        <input type="text">
+        <input type="checkbox" id="chk" checked>
+        <input type="text">
+        <input type="text">
+        <input type="text">
+    </form>
+</body>
+<script>
+    window.onload = pageLoadEventHandler;
+
+    function pageLoadEventHandler() {
+        var inputs = document.getElementsByTagName("input");
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type == "text") {
+                inputs[i].onblur = vervangAmp;
+            }
+        }
+    }
+
+    function vervangAmp(e) {
+        e = e || window.event;
+
+        str = e.target.value || e.srcElement.value;
+        e.target.value = str.replace(/&/g, "and");
+    }
+</script>
+
+</html>

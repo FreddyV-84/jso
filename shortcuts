@@ -16,7 +16,16 @@ ls-R                Recursively list files in subdirectories
 =======================================================================
 ===== Visual Studio Code ==============================================
 =======================================================================
-Shift-Command-P     Command Palette
-Shift-Alt-F         Format Code
-Ctrl-`              Show/Hide Terminal
-Shift-Alt-A         Toggle Comment Block
+Key Combination     Context     Description
+-----------------------------------------------------------------------
+Shift-Command-P     *           Command Palette
+Shift-Alt-F         Code        Format Code
+Ctrl-`              *           Show/Hide Terminal
+Shift-Command-:     Code        Toggle Line Comment
+Command-F2          Code        Change All Occurrences
+F2                  Code        Rename Symbol
+Alt-W               HTML        Wrap in HTML Tags
+Alt-Down            *           Move Line Down
+Alt-Up              *           Move Line Up
+Shift-Alt-Down      *           Copy Line Down
+Shift-Alt-Up        *           Copy Line Up
