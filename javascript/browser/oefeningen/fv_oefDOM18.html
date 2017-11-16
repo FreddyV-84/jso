@@ -46,7 +46,8 @@
 		document.ondblclick = function () {
 			document.getElementById("sticky").style.display = "none";
 		};
-		document.onmousemove = stickLabel;
+		// document.onmousemove = stickLabel;
+		document.addEventListener("mousemove", stickLabel);
 	};
 
 	function stickLabel(e) {
