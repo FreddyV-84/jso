@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>kwis</title>
+	<style>
+		.questionBox {
+			display: flex;
+			flex-flow: row wrap;
+			width: 200px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<form id="frm">
+		<h3>Met welke event properties kan je de positie van de muisklik in het content venster uitlezen?</h3>
+		<div class="questionBox">
+			<div class="answer">
+				<input type="radio" name="question1" id="client">
+				<label for="client">clientX, clientY</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question1" id="page">
+				<label for="page">pageX, pageY</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question1" id="screen">
+				<label for="screen">screenX, screenY</label>
+			</div>
+		</div>
+		<input type="button" value="controleer" id="btnCheck">
+	</form>
+</body>
+<script>
+	window.onload = function () {
+		document.getElementById("btnCheck").onclick = checkQuestion;
+	};
+
+	function checkQuestion() {
+		var answer;
+		if (frm.question1[0].checked) {
+			answer = true;
+		} else {
+			answer = false;
+		}
+
+		alert(answer ? "correct" : "fout");
+	}
+</script>
+
+</html>

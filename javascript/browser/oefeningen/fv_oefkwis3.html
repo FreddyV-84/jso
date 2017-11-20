@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>kwis</title>
+	<style>
+		body {
+			background-color: #0984A0;
+		}
+
+		input {
+			background-color: #035A6D;
+		}
+
+		.questionBox {
+			display: flex;
+			flex-flow: row wrap;
+			width: 350px;
+		}
+
+		.answer {
+			width: 300px;
+		}
+
+		#btnCheck {
+			position: fixed;
+			right: 20px;
+			bottom: 20px;
+			width: 100px;
+			font-weight: 500;
+			padding: 15px;
+			border: 2px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="loc"></div>
+	<form id="frm">
+		<h3>Met welke event properties kan je de positie van de muisklik in het content venster uitlezen?</h3>
+		<div class="questionBox">
+			<div class="answer">
+				<input type="radio" name="question1" id="q1-client">
+				<label for="q1-client">clientX, clientY</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question1" id="q1-page">
+				<label for="q1-page">pageX, pageY</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question1" id="q1-screen">
+				<label for="q1-screen">screenX, screenY</label>
+			</div>
+		</div>
+		<h3>Hoe kunnen we meerdere event handler functies registreren op een event?</h3>
+		<div class="questionBox">
+			<div class="answer">
+				<input type="radio" name="question2" id="q2-na">
+				<label for="q2-na">Dit kan niet</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question2" id="q2-op">
+				<label for="q2-op">met de += operator</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question2" id="q2-met">
+				<label for="q2-met">met de addEventListener methode</label>
+			</div>
+		</div>
+		<h3>Met welk event kunnen we de focus op een element krijgen?</h3>
+		<div class="questionBox">
+			<div class="answer">
+				<input type="radio" name="question3" id="q3-fi">
+				<label for="q3-fi">focusin</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question3" id="q3-fs">
+				<label for="q3-fs">focus</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question3" id="q3-fo">
+				<label for="q3-fo">focusout</label>
+			</div>
+		</div>
+		<input type="button" value="controleer" id="btnCheck">
+	</form>
+</body>
+
+<script>
+	window.onload = function () {
+		document.getElementById("btnCheck").onclick = checkQuestions;
+		var loc = document.getElementById("loc");
+		loc.innerText = window.location.href;
+	};
+
+	function checkQuestions() {
+		//window.location.replace("fv_oefkwis3.html");
+		var correctAnswers = [0, 2, 1],
+			question, answerLabel, answerLabels;
+
+		// Clear existing answers
+		answerLabels = document.getElementsByClassName("answerLabel");
+		while (answerLabels[0]) {
+			answerLabels[0].parentNode.removeChild(answerLabels[0]);
+		}
+
+		// Render answers
+		for (var q = 0; q < 3; q++) {
+			question = document.getElementsByName("question" + (q + 1));
+			answerLabel = document.createElement("span");
+			answerLabel.className = "answerLabel";
+			if (checkQuestion(question, correctAnswers[q])) {
+				answerLabel.innerText = " Goed";
+			} else {
+				answerLabel.style.color = "rgb(180, 0, 0)";
+				answerLabel.innerText = " Fout";
+			}
+			document.getElementsByTagName("h3")[q].appendChild(answerLabel);
+		}
+
+		function checkQuestion(radioButtonNameElement, correctAnswer) {
+			var answer;
+			if (radioButtonNameElement[correctAnswer].checked) {
+				answer = true;
+			} else {
+				answer = false;
+			}
+
+			return answer;
+		}
+	}
+</script>
+
+</html>

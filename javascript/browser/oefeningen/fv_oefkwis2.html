@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>kwis</title>
+	<style>
+		.questionBox {
+			display: flex;
+			flex-flow: row wrap;
+			width: 200px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<form id="frm">
+		<h3>Met welke event properties kan je de positie van de muisklik in het content venster uitlezen?</h3>
+		<div class="questionBox">
+			<div class="answer">
+				<input type="radio" name="question1" id="q1-client">
+				<label for="q1-client">clientX, clientY</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question1" id="q1-page">
+				<label for="q1-page">pageX, pageY</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question1" id="q1-screen">
+				<label for="q1-screen">screenX, screenY</label>
+			</div>
+		</div>
+		<h3>Hoe kunnen we meerdere event handler functies registreren op een event?</h3>
+		<div class="questionBox">
+			<div class="answer">
+				<input type="radio" name="question2" id="q2-na">
+				<label for="q2-na">Dit kan niet</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question2" id="q2-op">
+				<label for="q2-op">met de += operator</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question2" id="q2-met">
+				<label for="q2-met">met de addEventListener methode</label>
+			</div>
+		</div>
+		<h3>Met welk event kunnen we de focus op een element krijgen?</h3>
+		<div class="questionBox">
+			<div class="answer">
+				<input type="radio" name="question3" id="q3-fi">
+				<label for="q3-fi">focusin</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question3" id="q3-fs">
+				<label for="q3-fs">focus</label>
+			</div>
+			<div class="answer">
+				<input type="radio" name="question3" id="q3-fo">
+				<label for="q3-fo">focusout</label>
+			</div>
+		</div>
+		<input type="button" value="controleer" id="btnCheck">
+	</form>
+</body>
+<script>
+	window.onload = function () {
+		document.getElementById("btnCheck").onclick = checkQuestions;
+	};
+
+	function checkQuestions() {
+		var correctAnswers = [0, 2, 1];
+
+		var vraag1 = checkQuestion(frm.question1, correctAnswers[0]);
+		var vraag2 = checkQuestion(frm.question2, correctAnswers[1]);
+		var vraag3 = checkQuestion(frm.question3, correctAnswers[2]);
+
+		alert("Vraag 1: " + (vraag1 ? "correct" : "fout") +
+			"\nVraag 2: " + (vraag2 ? "correct" : "fout") +
+			"\nVraag 3: " + (vraag3 ? "correct" : "fout"));
+
+	}
+
+	function checkQuestion(radioButtonNameElement, correctAnswer) {
+		var answer;
+		if (radioButtonNameElement[correctAnswer].checked) {
+			answer = true;
+		} else {
+			answer = false;
+		}
+
+		return answer;
+	}
+</script>
+
+</html>
