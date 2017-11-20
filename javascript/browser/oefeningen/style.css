@@ -1,0 +1,22 @@
+body {
+    background-color: #0984A0;
+}
+
+input {
+    background-color: #a8dde8;
+    margin: 2px;
+}
+
+.flexContainer {
+    display: flex;
+    flex-flow: row wrap;
+    width: 320px;
+}
+
+#chkCase{
+    width: 130px;
+}
+
+label {
+    width: 130px;
+}

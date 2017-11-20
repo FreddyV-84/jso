@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Tester</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form id="frm" class="flexContainer">
+        <label for="chkCase">Case Sensitive</label>
+        <input type="checkbox" name="chkCase" id="chkCase">
+        <label for="input">invoer</label>
+        <input type="text" name="input" id="input">
+        <label for="regex">reguliere expressie</label>
+        <input type="text" name="regex" id="regex">
+        <label for="input2">invoer2</label>
+        <input type="text2" name="input2" id="input2">
+        <input type="button" value="controleer" id="btnCheck">
+        <input type="submit" value="submit">
+    </form>
+    <div id="result"></div>
+    <div id="result2"></div>
+</body>
+<script>
+    window.onload = function () {
+        document.getElementById("btnCheck").onclick = checkRegEx;
+    };
+
+    function checkRegEx() {
+        var input = frm.input.value;
+        var input2 = frm.input2.value;
+        var chkCase = frm.chkCase.checked;
+        var regex, regExBaked = null;
+
+
+        if (chkCase) {
+            regex = new RegExp(frm.regex.value);
+            regExBaked = new RegExp("^([1-9]|1\\d|2[0-5])$");
+        } else {
+            regex = new RegExp(frm.regex.value, "i");
+            regExBaked = new RegExp("^([1-9]|1\\d|2[0-5])$", "i");
+        }
+
+        if (regExBaked.test(input2)) {
+            document.getElementById("result2").innerText = "RegEx2 [ OK ]";
+        } else {
+            document.getElementById("result2").innerText = "RegEx2 [ Failed ]";
+        }
+
+        if (regex.test(input)) {
+            document.getElementById("result").innerText = "RegEx1 [ OK ]";
+        } else {
+            document.getElementById("result").innerText = "RegEx1 [ Failed ]";
+        }
+
+        //alert("invoer: " + input + "\nregexp: " + regex);
+    }
+</script>
+
+</html>
