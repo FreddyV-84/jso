@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2_2_1</title>
+    <style>
+        #frm {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+        }
+
+        #txtQuestion,
+        #txtAnswer {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="frm">
+        <input type="button" value="Bepaal de actieve vraag" id="btnActiveQuestion">
+
+        <label for="question">Vraag:</label>
+        <input type="text" name="question" id="txtQuestion">
+
+        <input type="button" value="Bepaal het antwoord op die vraag" id="btnAnswer">
+
+        <label for="answer">Antwoord:</label>
+        <input type="text" name="answer" id="txtAnswer">
+    </form>
+</body>
+<script src="test2_2_1.js"></script>
+
+</html>

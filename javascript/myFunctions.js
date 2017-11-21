@@ -16,9 +16,13 @@ function copy(o) {
 // number = Math.floor(Math.exp(Math.random()*Math.log(maxmimum-minimum+1)))+minimum
 // This line should give you roughly the same number of 1-digit numbers as 2-digit numbers and as 3-digit numbers.
 // There are also other distributions for random numbers like the normal distribution (also called Gaussian distribution).
-function getRandom(min, max){
+function getRandomPow(min, max){
     //return Math.random(); // gives you an uniform distribution of numbers 
     // => not ideal for distribution on a long scale
     min--;
     return Math.floor(Math.exp(Math.random()*Math.log(max-min+1)))+min;
+}
+
+function getRandom(max){
+    return  1 + Math.floor(Math.random() * max);
 }
