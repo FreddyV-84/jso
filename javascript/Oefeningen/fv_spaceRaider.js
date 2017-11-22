@@ -68,6 +68,7 @@ function render() {
     drawEnemies();
     drawPlayer();
     drawLasers();
+    drawInterface();
 }
 
 function processInput(e) {
@@ -143,6 +144,10 @@ function configurePlayer() {
     playerX = middleX;
     playerY = 550;
     laserSpeed = 10;
+}
+
+function drawInterface(){
+    drawText("#efd","Score: 34.053", 10, 20);
 }
 
 function drawLasers(){
