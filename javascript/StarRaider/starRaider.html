@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Star Raider</title>
+    <style>
+        canvas {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background: transparent;
+        }
+
+        #cvs_background {
+            z-index: -2;
+        }
+
+        #cvs_main {
+            z-index: -1;
+        }
+
+        #cvs_ship {
+            z-index: 0;
+        }
+
+        #lblShipFireRange {
+            position: fixed;
+            left: 620px;
+        }
+
+        #rangeShipFireRate {
+            position: fixed;
+            left: 775px;
+        }
+
+        #stats {
+            position: fixed;
+            left: 620px;
+            top: 50px;
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The canvas for the panning background -->
+    <canvas id="cvs_background" width="600" height="360">
+        Your browser does not support canvas. Please try again with a different browser.
+    </canvas>
+    <!-- The canvas for all enemy ships and bullets -->
+    <canvas id="cvs_main" width="600" height="360">
+    </canvas>
+    <!-- The canvas the ship uses (can only move up one forth the screen.) -->
+    <canvas id="cvs_ship" width="600" height="360">
+    </canvas>
+    <label for="rangeShipFireRate" id="lblShipFireRange">game.ship.fireRate</label>
+    <div id="controls">
+        <input type="range" name="" id="rangeShipFireRate" min="7" max="30">
+    </div>
+    <div id="stats">
+
+    </div>
+    <script src="starRaider.js"></script>
+</body>
+
+</html>
