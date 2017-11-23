@@ -14,16 +14,39 @@ function init() {
 
 function changeFireRate() {
     game.ship.fireRate = document.getElementById("rangeShipFireRate").value;
-    document.getElementById("lblShipFireRange").innerHTML = "game.ship.fireRate: " + game.ship.fireRate;
+    document.getElementById("lblShipFireRange").innerText = "game.ship.fireRate: " + game.ship.fireRate;
 }
 
+function changeShipSpeed() {
+    game.ship.speed = parseInt(document.getElementById("rangeShipSpeed").value);
+    document.getElementById("lblShipSpeed").innerText = "game.ship.speed: " + game.ship.speed;
+}
 
-var stats = document.getElementById("stats");
+var statsShip = document.getElementById("statsShip");
+var statsBullets = document.getElementById("statsBullets");
+var bullets = "";
+
 function displayStats(){
-    stats.innerText = "game.ship.speed: " + game.ship.speed +
-    "\ngame.ship.fireRate: " + game.ship.fireRate;
+    bullets = "";
+    for(var i = 0; i<game.ship.bulletPool.pool.length; i++)
+    {
+        bullets+= "[" + (game.ship.bulletPool.pool[i].alive ? "*" : " ") + "]";
+    }
+
+    statsShip.innerText = "OBJECT: game.ship" + 
+    "\n\ngame.ship.x: " + game.ship.x + 
+    "\ngame.ship.y: " + game.ship.y + 
+    "\ngame.ship.width: " + game.ship.width + 
+    "\ngame.ship.height: " + game.ship.height +
+    "\ngame.ship.canvasWidth: " + game.ship.canvasWidth +
+    "\ngame.ship.canvasHeight: " + game.ship.canvasHeight +
+    "\ngame.ship.speed: " + game.ship.speed +
+    "\n\ngame.ship.fireRate: " + game.ship.fireRate;
     // bullet speed
     // ...
+    statsBullets.innerText = "OBJECT POOL: bulletPool" + 
+    "\n\ngame.ship.bulletPool.pool.length: " + game.ship.bulletPool.pool.length +
+    "\n\n" + bullets;
 }
 
 /**
@@ -40,6 +63,11 @@ function Game() {
      */
     this.init = function () {
         document.getElementById("rangeShipFireRate").onchange = changeFireRate;
+        document.getElementById("rangeShipSpeed").onchange = changeShipSpeed;
+
+        document.getElementById("rangeShipFireRate").value = changeFireRate;
+        document.getElementById("rangeShipSpeed").value = changeShipSpeed;
+        
 
         // Get the canvas elements
         this.bgCanvas = document.getElementById('cvs_background');
@@ -205,7 +233,7 @@ window.requestAnimFrame = (function () {
  */
 function Pool(maxSize) {
     var size = maxSize; // Max bullets allowed in the pool
-    var pool = [];
+    this.pool = [];
     /*
      * Populates the pool array with Bullet objects
      */
@@ -215,7 +243,7 @@ function Pool(maxSize) {
             var bullet = new Bullet();
             bullet.init(0, 0, imageRepository.bullet.width,
                 imageRepository.bullet.height);
-            pool[i] = bullet;
+            this.pool[i] = bullet;
         }
     };
     /*
@@ -223,9 +251,9 @@ function Pool(maxSize) {
      * pushes it to the front of the array.
      */
     this.get = function (x, y, speed) {
-        if (!pool[size - 1].alive) {
-            pool[size - 1].spawn(x, y, speed);
-            pool.unshift(pool.pop());
+        if (!this.pool[size - 1].alive) {
+            this.pool[size - 1].spawn(x, y, speed);
+            this.pool.unshift(this.pool.pop());
         }
     };
     /*
@@ -234,8 +262,8 @@ function Pool(maxSize) {
      * fire and only have 1 bullet spawn instead of 2.
      */
     this.getTwo = function (x1, y1, speed1, x2, y2, speed2) {
-        if (!pool[size - 1].alive &&
-            !pool[size - 2].alive) {
+        if (!this.pool[size - 1].alive &&
+            !this.pool[size - 2].alive) {
             this.get(x1, y1, speed1);
             this.get(x2, y2, speed2);
         }
@@ -247,10 +275,10 @@ function Pool(maxSize) {
     this.animate = function () {
         for (var i = 0; i < size; i++) {
             // Only draw until we find a bullet that is not alive
-            if (pool[i].alive) {
-                if (pool[i].draw()) {
-                    pool[i].clear();
-                    pool.push((pool.splice(i, 1))[0]);
+            if (this.pool[i].alive) {
+                if (this.pool[i].draw()) {
+                    this.pool[i].clear();
+                    this.pool.push((this.pool.splice(i, 1))[0]);
                 }
             } else
                 break;
@@ -308,7 +336,7 @@ Bullet.prototype = new Drawable();
  */
 function Ship() {
     this.speed = 3;
-    this.bulletPool = new Pool(30);
+    this.bulletPool = new Pool(16);
     this.bulletPool.init();
     this.fireRate = 15;
     var counter = 0;

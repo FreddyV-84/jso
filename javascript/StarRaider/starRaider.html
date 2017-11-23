@@ -4,6 +4,10 @@
 <head>
     <title>Star Raider</title>
     <style>
+        html, body{
+            font-family: monospace;
+            font-size: 11px;
+        }
         canvas {
             position: absolute;
             top: 0px;
@@ -23,21 +27,35 @@
             z-index: 0;
         }
 
-        #lblShipFireRange {
+        #statsContainer {
+            display: inline-block;
             position: fixed;
             left: 620px;
         }
 
-        #rangeShipFireRate {
-            position: fixed;
-            left: 775px;
+        #statsShip {
+            display: block;
+            background-color: rgb(111, 135, 167);
+            border: 1px solid black;
+            padding: 5px;
+            margin: 5px;
         }
 
-        #stats {
-            position: fixed;
-            left: 620px;
-            top: 50px;
-            background-color: gray;
+        #statsBullets {
+            display: block;
+            background-color: rgb(111, 135, 167);
+            border: 1px solid black;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        #controls {
+            display: block;
+            background-color: rgb(111, 135, 167);
+            border: 1px solid black;
+            padding: 5px;
+            margin: 5px;
+            text-align: right;
         }
     </style>
 </head>
@@ -53,12 +71,19 @@
     <!-- The canvas the ship uses (can only move up one forth the screen.) -->
     <canvas id="cvs_ship" width="600" height="360">
     </canvas>
-    <label for="rangeShipFireRate" id="lblShipFireRange">game.ship.fireRate</label>
-    <div id="controls">
-        <input type="range" name="" id="rangeShipFireRate" min="7" max="30">
-    </div>
-    <div id="stats">
-
+    <div id="statsContainer">
+        <div id="controls">
+            <div class="control">
+                <label for="rangeShipFireRate" id="lblShipFireRange">game.ship.fireRate: 15</label>
+                <input type="range" name="" id="rangeShipFireRate" min="7" max="30">
+            </div>
+            <div class="control">
+                <label for="speedShip" id="lblShipSpeed">game.ship.speed: 3</label>
+                <input type="range" name="" id="rangeShipSpeed" min="1" max="10">
+            </div>
+        </div>
+        <div id="statsShip"></div>
+        <div id="statsBullets"></div>
     </div>
     <script src="starRaider.js"></script>
 </body>
