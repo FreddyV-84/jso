@@ -10,9 +10,10 @@
         }
         canvas {
             position: absolute;
-            top: 0px;
-            left: 0px;
+            top: 13px;
+            left: 5px;
             background: transparent;
+            border:1px solid black;
         }
 
         #cvs_background {
@@ -78,8 +79,12 @@
                 <input type="range" name="" id="rangeShipFireRate" min="7" max="30">
             </div>
             <div class="control">
-                <label for="speedShip" id="lblShipSpeed">game.ship.speed: 3</label>
+                <label for="rangeShipSpeed" id="lblShipSpeed">game.ship.speed: 3</label>
                 <input type="range" name="" id="rangeShipSpeed" min="1" max="10">
+            </div>
+            <div class="control">
+                <label for="chkDoubleShot" id="lblDoubleShot">game.ship.doubleShot</label>
+                <input type="checkbox" id="chkDoubleShot" checked>
             </div>
         </div>
         <div id="statsShip"></div>
