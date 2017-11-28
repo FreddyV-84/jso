@@ -6,9 +6,9 @@ var tankBeurten = [],
     totaalInhoud = 0,
     totaalAfstand = 0;
 
-function TankBeurt() {
-    this.inhoud;
-    this.afstand;
+function TankBeurt(inhoud, afstand) {
+    this.inhoud = inhoud;
+    this.afstand = afstand;
 }
 
 for (var t = 0; t < 5; t++) {
