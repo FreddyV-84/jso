@@ -11,29 +11,107 @@
 <body>
     <div id="wrapper">
 
-        <header>Hoofding
-            <nav>Menu</nav>
+        <header>
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <!--
+          A fake / hidden checkbox is used as click reciever,
+          so you can use the :checked selector on it.
+          -->
+                    <input type="checkbox" />
+
+                    <!--
+          Some spans to act as a hamburger.
+          
+          They are acting like a real hamburger,
+          not that McDonalds stuff.
+          -->
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <!--
+          Too bad the menu has to be inside of the button
+          but hey, it's pure CSS magic.
+          -->
+                    <ul id="menu">
+                        <a href="#welcome">
+                            <li>Home</li>
+                        </a>
+                        <a href="#program">
+                            <li>Programma</li>
+                        </a>
+                        <a href="#course">
+                            <li>Onze Opleiding</li>
+                        </a>
+                        <a href="#students">
+                            <li>Cursisten</li>
+                        </a>
+                        <a href="#register">
+                            <li>Inschrijven</li>
+                        </a>
+                        <a href="#partners">
+                            <li>Partners</li>
+                        </a>
+                        <a href="#contact">
+                            <li>Contact</li>
+                        </a>
+                    </ul>
+                </div>
+            </nav>
         </header>
-        <section>
+        <section id="welcome">
             Sectie Welkom/Intro
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </section>
-        <section>
+        <section id="program">
             Sectie Programma
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </section>
-        <section>
+        <section id="course">
             Onze Opleiding
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </section>
-        <section>
+        <section id="students">
             Sectie Cursisten
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </section>
-        <section>
+        <section id="register">
             Sectie Inschrijvingsformulier
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </section>
-        <section>
+        <section id="contact">
             section Contact
+            <br>
+            <br>
         </section>
-        <section>
+        <section id="partners">
             Sectie Partners
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
         </section>
         <footer>Footer</footer>
     </div>

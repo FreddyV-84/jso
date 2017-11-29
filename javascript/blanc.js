@@ -16,15 +16,15 @@ function Person(name){
 function Mammal(name) {
     this.name = name;
 }
-Mammal.prototype.breathe = function (mode) {
-    switch (mode) {
-        case "idle":
-            console.log(this.name + " is breathing relaxed");
-            break;
-        case "heavy":
-            console.log(this.name + " is breathing heavy");
-    }
-};
+// Mammal.prototype.breathe = function (mode) {
+//     switch (mode) {
+//         case "idle":
+//             console.log(this.name + " is breathing relaxed");
+//             break;
+//         case "heavy":
+//             console.log(this.name + " is breathing heavy");
+//     }
+// };
 
 
 // -------------------------------------------------------------------------------------
@@ -40,14 +40,16 @@ Cat.prototype.constructor = Cat;
 // -------------------------------------------------------------------------------------
 // Program Logic
 // -------------------------------------------------------------------------------------
+let mammal = new Mammal();
+
 // let bob = new Person("Bob");
 // console.log(bob.sayHi());
 
-var mammal = new Mammal("Diego");
-var cat = new Cat();
-cat.name = "Garfield";
+// var mammal = new Mammal("Diego");
+// var cat = new Cat();
+// cat.name = "Garfield";
 
-console.log(cat.__proto__);
+// console.log(cat.__proto__);
 
 // mammal.breathe("heavy");
 
