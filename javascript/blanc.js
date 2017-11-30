@@ -3,19 +3,23 @@
 // -------------------------------------------------------------------------------------
 // Function Constructor: Person
 // -------------------------------------------------------------------------------------
-function Person(name){
-    this.name = name
-    this.sayHi = function(){
-        return 'Hi, I am ' + this.name
-    }
+function Person(name) {
+    this.name = name;
 }
+Person.prototype = {
+    constructor: Person,
+    sayHi: function () {
+        return 'Hi, I am ' + this.name;
+    }
+};
 
 // -------------------------------------------------------------------------------------
 // Function Constructor: Mammal
 // -------------------------------------------------------------------------------------
-function Mammal(name) {
-    this.name = name;
+function Mammal() {
+    this.name = "test";
 }
+Mammal.prototype.walk = function(){console.log(this.name + " is walking...");};
 // Mammal.prototype.breathe = function (mode) {
 //     switch (mode) {
 //         case "idle":
@@ -40,7 +44,21 @@ Cat.prototype.constructor = Cat;
 // -------------------------------------------------------------------------------------
 // Program Logic
 // -------------------------------------------------------------------------------------
+let name = "globalTest";
+
 let mammal = new Mammal();
+let cat = new Cat();
+
+mammal.walk();
+let walkingVar = mammal.walk;
+
+walkingVar();
+
+console.log("Mammal.prototype:      " + Mammal.prototype);
+console.log("mammal.prototype:      " + mammal.__proto__); // the parent object it inherited its methods and properties from
+
+console.log("Cat.prototype:      " + Cat.prototype);
+console.log("cat.prototype:      " + cat.__proto__);
 
 // let bob = new Person("Bob");
 // console.log(bob.sayHi());
