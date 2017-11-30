@@ -1,45 +1,94 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>DOM manipulatie: voorbeeld 1</title>
-<script>
-var lijstje = ["brood", "kaas", "boter", "ham"];
+    <title>DOM manipulatie: voorbeeld 1</title>
+    <script>
+        var lijstje = ["brood", "kaas", "boter", "ham"];
+        var melkproducten = ["melk", "boter", "kaas", "yoghurt"];
 
-window.onload = function(){
-    maakHoofding();
-    maakLijst();
-    maakKnop();
-}
+        window.onload = function () {
+            maakHoofding();
+            maakLijst();
+            maakKnop();
+            maakCheckbox();
+            document.getElementById("btnAdd").addEventListener("click", addListItem);
+        }
 
-function maakHoofding(){
-    var h2 = document.createElement("h2");
-    h2.innerText = "Boodschappenlijstje";
-    document.body.appendChild(h2);
-}
+        function maakHoofding() {
+            var h2 = document.createElement("h2");
+            h2.innerText = "Boodschappenlijstje";
+            document.body.appendChild(h2);
+        }
 
-function maakLijst(){
-    var ul = document.createElement("ul");
-    document.body.appendChild(ul);
-    var li;
-    for(var i=0; i<lijstje.length; i++){
-        li = document.createElement("li");
-        li.innerText = lijstje[i];
-        ul.appendChild(li);
-    }
-}
+        function maakLijst() {
+            var ul = document.createElement("ul");
+            document.body.appendChild(ul);
+            var li;
+            for (var i = 0; i < lijstje.length; i++) {
+                li = document.createElement("li");
+                li.innerText = lijstje[i];
+                ul.appendChild(li);
+            }
+        }
 
-function maakKnop(){
-    var btn = document.createElement("input");
-    btn.type = "button";
-    btn.value = "bestellen";
-    btn.onclick = function(){
-        alert("uw bestelling wordt verwerkt");
-    }
-    document.body.appendChild(btn);
-}
-</script>
+        function maakKnop() {
+            var btn = document.createElement("input");
+            btn.type = "button";
+            btn.value = "bestellen";
+            btn.onclick = function () {
+                alert("uw bestelling wordt verwerkt");
+                clearList();
+            }
+            document.body.appendChild(btn);
+        }
+
+        function maakCheckbox() {
+            var chkBox = document.createElement("input");
+            var lblDairy = document.createElement("label");
+            chkBox.type = "checkbox";
+            chkBox.id = "chkDairy";
+            lblDairy.setAttribute("for", "chkDairy");
+            lblDairy.innerText = "Zonder melkproducten";
+
+            var list = document.getElementsByTagName("ul")[0];
+            list.after(chkBox);
+            document.body.insertBefore(lblDairy, chkBox);
+        }
+
+        function addListItem() {
+            var listItem = document.createElement("li");
+            listItem.innerText = document.getElementById("txtListItem").value;
+            document.getElementsByTagName("ul")[0].appendChild(listItem);
+        }
+
+        function clearList() {
+            var list = document.getElementsByTagName("ul")[0];
+            var chkBox = document.getElementById("chkDairy");
+
+            if (chkBox.checked) {
+                var numberOfProducts = list.childNodes.length;
+                for (var i = numberOfProducts - 1; i >= 0; i--) {
+                    if (melkproducten.indexOf(list.childNodes[i].innerText) === -1) {
+                        list.removeChild(list.childNodes[i]);
+                    }
+                }
+            } else {
+                while (list.hasChildNodes()) {
+                    list.removeChild(list.firstChild);
+                }
+            }
+
+        }
+    </script>
 </head>
+
 <body>
+    <form>
+        <input type="text" name="" id="txtListItem">
+        <input type="button" value="Add" id="btnAdd">
+    </form>
     <h1>Onderstaande elementen zijn dynamisch toegevoegd</h1>
 </body>
+
 </html>
