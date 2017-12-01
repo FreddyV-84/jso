@@ -1,5 +1,8 @@
 'use strict';
 
+fie1();
+
+
 function fie1(){
     console.log("fie1 wordt uitgevoerd");
 }
