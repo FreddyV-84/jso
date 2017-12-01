@@ -48,7 +48,8 @@
             var lblDairy = document.createElement("label");
             chkBox.type = "checkbox";
             chkBox.id = "chkDairy";
-            lblDairy.setAttribute("for", "chkDairy");
+            // lblDairy.setAttribute("for", "chkDairy");
+            lblDairy.htmlFor = "chkDairy";
             lblDairy.innerText = "Zonder melkproducten";
 
             var list = document.getElementsByTagName("ul")[0];
