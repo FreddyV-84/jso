@@ -1,0 +1,96 @@
+body {
+    /* background: linear-gradient(to bottom, hsla(40, 51%, 20%, 1) 0%, hsla(40, 16%, 50%, 1) 100%); */
+    background: url(../images/floor.jpg) 0px 0px / 300px 300px repeat;
+}
+
+#wrapper {
+    max-width: 900px;
+    margin: 80px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#loading {
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+#gameTitle {
+    margin: 14px 0;
+    width: 100%;
+    text-align: center;
+    border: 4px solid #a2961d;
+    border-radius: 12px;
+    box-shadow: 0px 0px 4px 2px #000000;
+    background-color: #cbbc20;
+    color: #023411;
+    padding: 5px;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+#tableFelt {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #086725;
+    border: 4px solid rgb(62, 52, 3);
+    box-shadow: 0px 0px 3px 4px #01220b;
+    border-radius: 44px;
+    padding-bottom: 20px;
+}
+
+.space {
+    display: inline-block;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+#stackSpace {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin: 48px;
+}
+
+#controls {
+    width: 240px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.button {
+    background-color: #006045;
+    color: #cbbc20;
+    border: 3px solid #004733;
+    border-radius: 8px;
+    box-shadow: 0px 0px 2px 0.5px;
+    outline: none;
+    margin: 5px;
+    padding: 5px 0;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.button:hover {
+    color: #cbbc20;
+    background-color: #670808e0;
+    border: 3px solid #440909;
+    box-shadow: 0px 0px 8px 1px #cbbc20;
+    font-weight: 300;
+}
+
+.button:active {
+    color: #b1bd1d;
+    font-weight: 700;
+}

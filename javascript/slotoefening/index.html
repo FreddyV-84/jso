@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Slotoefening 21</title>
+</head>
+
+<body>
+    <div id="loading">Loading 0/52</div>
+    <div id="wrapper">
+        <div id="deckSpace" class="space"></div>
+        <div id="tableFelt">
+            <div id="stackSpace" class="space"></div>
+        </div>
+        <div id="controls">
+            <div id="gameTitle">Game: [ title ]</div>
+            <input type="button" id="btnReveal" class="button" value="Reveal next card" disabled>
+            <input type="button" id="btnRiffle" class="button" value="Riffle remaining cards" disabled>
+            <input type="button" id="btnShuffle" class="button" value="Overhand shuffle remaining cards" disabled>
+        </div>
+    </div>
+</body>
+<script src="scripts/globals.js"></script>
+<script src="scripts/constructors.js"></script>
+<script src="scripts/app.js"></script>
+
+</html>
