@@ -1,30 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Web Storage - voorbeeld 3</title>
+	<title>Web Storage - voorbeeld 3</title>
 </head>
+
 <body>
-<h1>JSON object in web storage</h1>
-<form>
-<label for="naam">Naam:</label><input type="text" id="naam" placeholder="Tik hier uw naam"><br/>
-<label for="voornaam">Voornaam:</label><input type="text" id="voornaam" placeholder="Tik hier uw voornaam"><br/>
-<input type="button" value="Bewaar" onclick="bewaarPersoonInLocalStorage(this.form.naam.value, this.form.voornaam.value)">
-</form>
-<input type="button" value="Toon" onclick="toonPersoonUitLocalStorage()">
+	<h1>JSON object in web storage</h1>
+	<form>
+		<label for="naam">Naam:</label>
+		<input type="text" id="naam" placeholder="Tik hier uw naam">
+		<br/>
+		<label for="voornaam">Voornaam:</label>
+		<input type="text" id="voornaam" placeholder="Tik hier uw voornaam">
+		<br/>
+		<input type="button" value="Bewaar" onclick="bewaarPersoonInLocalStorage(this.form.naam.value, this.form.voornaam.value)">
+	</form>
+	<input type="button" value="Toon" onclick="toonPersoonUitLocalStorage()">
+	<ul id="lijst">
+
+	</ul>
 </body>
 <script>
-function bewaarPersoonInLocalStorage(naam, voornaam){
-	localStorage.setItem('persoon', JSON.stringify({"naam": naam, "voornaam": voornaam}));
-}
+	// globale variabele personen
+	var personen = [];
 
-function toonPersoonUitLocalStorage(){
-	var persoon = JSON.parse(localStorage.getItem('persoon'));
-	if (persoon != null){
-		alert(persoon.voornaam + " "+ persoon.naam);
+	window.onload = function () {
+		// Bij het laden van de pagina:
+		// Bestaat er reeds een localStorage KEY met als naam persoon???
+		if (localStorage.persoon) {
+			// Zo ja, haal de VALUE hier van op, parse deze met JSON.parse (want we weten dat
+			// we met een JSON object werken), 
+			// en ken de waarde toe aan onze globale variabele personen (wat een array is)
+			personen = JSON.parse(localStorage.getItem('persoon'));
+			// toon de personen uit de array in een unordered list
+			toonPersonen();
+		}
 	}
-	else{
-		alert("Er is nog geen persoon bewaard.");
+
+	function bewaarPersoonInLocalStorage(naam, voornaam) {
+		if (naam.length > 0 && voornaam.length > 0) {
+			// maak een object variabele aan met twee properties en ken de functie argumenten toe
+			var p = {
+				naam: naam,
+				voornaam: voornaam
+			};
+
+			personen.push(p); // voeg het object toe aan de globale personen array
+			// de personen array serialiseren we eerst naar een string met JSON.stringify en deze
+			// waarde bewaren we als VALUE in de localStorage met als KEY persoon
+			localStorage.setItem('persoon', JSON.stringify(personen));
+			toonPersonen();
+		}
+		else{
+			alert("naam en voornaam moeten ingevuld zijn.")
+		}
 	}
-}
+
+	function toonPersoonUitLocalStorage() {
+		var persoon = JSON.parse(localStorage.getItem('persoon'));
+		if (persoon) {
+			var result = "";
+			for (var i = 0; i < persoon.length; i++) {
+				result += persoon[i].naam + " " + persoon[i].voornaam + "\n";
+			}
+			alert(result);
+
+		} else {
+			alert("Er is nog geen persoon bewaard.");
+		}
+	}
+
+	function toonPersonen() {
+		// haal het html element ul op
+		var ul = document.getElementById("lijst");
+		// eerst verwijderen we alles uit het html ul element
+		while (ul.childNodes.length > 0) {
+			// zolang er kinderen zijn, blijf dan het eerste element verwijderen
+			ul.removeChild(ul.childNodes[0]);
+		}
+
+		// overloop de personen array en maak voor elke persoon een li element aan
+		for (var i = 0; i < personen.length; i++) {
+			var li = document.createElement("li");
+			li.innerText = personen[i].naam + " " + personen[i].voornaam;
+			ul.appendChild(li);
+		}
+	}
 </script>
+
 </html>

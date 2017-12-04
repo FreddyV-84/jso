@@ -1,22 +1,8 @@
 'use strict';
 
+// window.localStorage      - stores data with no expiration date
+// window.sessionStorage    - stores data for one session (data is lost when the browser tab is closed)
 
-(function (w) {
-    var appName = "foo";
-    var compileTime = new Date();
+sessionStorage['teller'] = 0;               // store/edit sessionStorage
+console.log(sessionStorage['teller']);      // get sessionStorage
 
-    w.printAppInfo = function () {
-        return appName + ": " + compileTime;
-    }
-})(global); // global in node, window in browser
-
-//console.log(printAppInfo());
-
-var display = function (name) {
-    console.log("Hello, " + name);
-};
-
-var displayArrow = name => console.log("Hello, " + name + " => Arrow Madness");
-
-display("fred");
-displayArrow("Fredje")

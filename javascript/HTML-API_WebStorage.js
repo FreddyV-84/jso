@@ -16,7 +16,7 @@ if (typeof (Storage) !== "undefined") {
 
 // ---------------------------------------------------------------- [ The localStorage Object ] ---------
 // Store
-localStorage.setItem("lastname", "Fred");
+localStorage.setItem("lastname", "Fred"); // params: KEY, VALUE
 localStorage.lastname = "Fred";
 localStorage["lastname"] = "Fred";
 // Retrieve
@@ -32,7 +32,7 @@ localStorage.removeItem("lastname");
 // except that it stores the data for only one session. 
 // The data is deleted when the user closes the specific browser tab.
 // Store
-sessionStorage.setItem("lastname", "Fred");
+sessionStorage.setItem("lastname", "Fred"); // params: KEY, VALUE
 sessionStorage.lastname = "Fred";
 // Retrieve
 console.log(sessionStorage.getItem("lastname"));
