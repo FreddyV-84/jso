@@ -22,6 +22,7 @@
 	</ul>
 </body>
 <script>
+<<<<<<< HEAD
 	// globale variabele personen
 	var personen = [];
 
@@ -36,6 +37,16 @@
 			// toon de personen uit de array in een unordered list
 			toonPersonen();
 		}
+=======
+function bewaarPersoonInLocalStorage(naam, voornaam){
+	localStorage.setItem('persoon', JSON.stringify({naam: naam, voornaam: voornaam}));
+}
+
+function toonPersoonUitLocalStorage(){
+	var persoon = JSON.parse(localStorage.getItem('persoon'));
+	if (persoon != null){
+		alert(persoon.voornaam + " "+ persoon.naam);
+>>>>>>> 4b5367d992588d4fe659bb297ca4c7ac65513e77
 	}
 
 	function bewaarPersoonInLocalStorage(naam, voornaam) {
