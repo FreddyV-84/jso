@@ -275,10 +275,18 @@ function drawText(canvas, context, textSize) {
 
 
 	// draw the tweet!
+<<<<<<< HEAD
 	var tweet = tweets.options[tweets.selectedIndex].value;
 	context.font = "italic " + textSize + "px serif";
 	context.textAlign = "center";
 	context.fillText(tweet, Math.floor(canvas.width / 2), 100);
+=======
+	selectObj = document.getElementById("tweets");
+	index = selectObj.selectedIndex;
+	var tweet = selectObj[index].value;
+	context.font = "italic 1.2em serif";
+	context.fillText(tweet, 30, 100);
+>>>>>>> 4ddd553e5da5526d435099329bd6e37f7a36c503
 
 	// If you want to try splitIntoLines to 
 	// handle longer tweets, uncomment this code
