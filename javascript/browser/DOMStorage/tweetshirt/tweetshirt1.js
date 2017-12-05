@@ -21,7 +21,8 @@ window.onload = function () {
 	button.onclick = previewHandler;
 
 	document.getElementById("saveButton").addEventListener("click", saveButtonClicked);
-	document.getElementById("loadButton").addEventListener("click", loadButtonClicked);
+	document.getElementById("removeButton").addEventListener('click', removeButtonClicked);
+	document.getElementById("presets").addEventListener("change", presetsChanged);
 
 	document.getElementById("shape").addEventListener("change", shapeChanged);
 
@@ -36,7 +37,22 @@ window.onload = function () {
 	makeImage();
 	shapeChanged();
 	loadPresets();
+	// setInterval(previewHandler, 1000 / 5);
 	previewHandler();
+}
+
+function removeButtonClicked() {
+	if (presets.selectedIndex !== -1) {
+		// remove in DOM
+		var selOption = presets[presets.selectedIndex];
+		presets.removeChild(selOption);
+
+		// remove in array and update localStorage
+		presetsArray.splice(presets.selectedIndex, 1);
+		localStorage.presets = presetsArray;
+
+		loadPresets();
+	}
 }
 
 function loadPresets() {
@@ -111,7 +127,7 @@ function objectPropInArray(list, prop, val) {
 	return false;
 }
 
-function loadButtonClicked() {
+function presetsChanged() {
 	var obj = null;
 	if (presets.selectedIndex !== -1) { // if preset selected
 		obj = presetsArray[presets.selectedIndex];

@@ -5,11 +5,35 @@
 // window.sessionStorage    - stores data for one session (data is lost when the browser tab is closed)
 
 // ---------------------------------------------------------------- [ Check Browser Support ] -----------
-// check browser support for localStorage and sessionStorage
-if (typeof (Storage) !== "undefined") {
-    // Code for localStorage/sessionStorage.
-} else {
-    // Sorry! No Web Storage support..
+if (storageAvailable('localStorage')) {
+    // Yippee! We can use localStorage awesomeness
+  }
+  else {
+    // Too bad, no localStorage for us
+  }
+
+function storageAvailable(type) {
+    try {
+        var storage = window[type],
+            x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage.length !== 0;
+    }
 }
 
 // Name/value pairs are always stored as strings. Remember to convert them to another format when needed!
