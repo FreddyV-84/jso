@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: arial, sans-serif;
+    font-size: 100%;
+    margin: 3em;
+    background: #666;
+    color: #fff;
+}
+
+h2,
+p {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+ul {
+    overflow: hidden;
+    padding: 3em;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #000;
+    background: #9dd9ff;
+    display: block;
+    height: 200px;
+    width: 200px;
+    padding: 10px;
+    -webkit-box-shadow: 6px 6px 4px 0px rgba(54, 54, 54, 0.75);
+    -moz-box-shadow: 6px 6px 4px 0px rgba(54, 54, 54, 0.75);
+    box-shadow: 6px 6px 4px 0px rgba(54, 54, 54, 0.75);
+    -webkit-transform: rotate(-6deg);
+    -o-transform: rotate(-6deg);
+    -moz-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+    -moz-transition: -moz-transform .5s ease;
+    -o-transition: -o-transform .5s ease;
+    -webkit-transition: -webkit-transform .5s ease;
+    transition: transform .5s ease;
+}
+
+ul li:nth-child(even) a {
+    -o-transform: rotate(4deg);
+    -webkit-transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    transform: rotate(4deg);
+    position: relative;
+    top: 5px;
+}
+
+ul li:nth-child(3n) a {
+    -o-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    position: relative;
+    top: -5px;
+    background: #cfc;
+    transition: background-color 2s;
+}
+
+ul li:nth-child(5n) a {
+    -o-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    transform: rotate(5deg);
+    position: relative;
+    top: -3px;
+    left: -14px;
+}
+
+ul li {
+    margin: 1em;
+    float: left;
+}
+
+.noteContainer {}
+
+.noteTitle {
+    font-size: 1.6rem;
+    text-align: center;
+    resize: none;
+    height: 30px;
+    width: 165px;
+    background-color: inherit;
+    border: none;
+    outline: none;
+}
+
+.noteContent {
+    font-family: "Reenie Beanie";
+    font-size: 1.4rem;
+    resize: none;
+    height: 165px;
+    width: 200px;
+    background-color: inherit;
+    border: none;
+    outline: none;
+}
+
+ul li a:hover,
+ul li a:focus {
+    -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, .8);
+    -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, .8);
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, .8);
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    transform: scale(1.25);
+    position: relative;
+    z-index: 5;
+    /* background-color: #008ae0;
+    transition: background-color 2s; */
+    -moz-transition: -moz-transform .5s ease;
+    -o-transition: -o-transform .5s ease;
+    -webkit-transition: -webkit-transform .5s ease;
+    transition: transform .5s ease;
+}
+
+#imgNewNote {}

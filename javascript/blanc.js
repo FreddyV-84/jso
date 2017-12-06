@@ -1,8 +1,7 @@
 'use strict';
 
-// window.localStorage      - stores data with no expiration date
-// window.sessionStorage    - stores data for one session (data is lost when the browser tab is closed)
+var fruit = ["appel", "banaan", "druif"];
 
-sessionStorage['teller'] = 0;               // store/edit sessionStorage
-console.log(sessionStorage['teller']);      // get sessionStorage
-
+fruit.forEach(function (e, i, a) {
+    console.log("element: " + e + ", index: " + i + ", alias: " + a);
+})
