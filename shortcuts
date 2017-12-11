@@ -29,3 +29,5 @@ Alt-Down            *           Move Line Down
 Alt-Up              *           Move Line Up
 Shift-Alt-Down      *           Copy Line Down
 Shift-Alt-Up        *           Copy Line Up
+Shift-Command--     *           Zoom out
+Shift-Command-+     *           Zoom in
