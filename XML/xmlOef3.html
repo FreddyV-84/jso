@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Oefening 3</title>
+</head>
+
+<body>
+    <div id="content"></div>
+</body>
+<!-- <script src="xmlUtil.js"></script> -->
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this);
+        }
+    };
+    xhttp.open("GET", "XML-bestanden/oef2.xml", true);
+    xhttp.send();
+
+    //     Schrijf een script dat het aantal werknemers kan tellen in een xml-document dat opgebouwd is volgens de onderstaande DTD.
+    // <!ELEMENT werknemers (werknemer)* >
+    // <!ELEMENT werknemer (naam) >
+    // <!ATTLIST werknemer 
+    // 	datumindienst CDATA #REQUIRED 
+    // 	loon CDATA #REQUIRED >
+    // <!ELEMENT naam (#PCDATA) >
+
+
+    function myFunction(xml) {
+        var xmlDoc = xml.responseXML;
+
+        var werknemers = xmlDoc.getElementsByTagName("werknemer");
+        var totaalLoon = 0;
+
+        for (var i = 0; i < werknemers.length; i++) {
+            // totaalLoon += parseFloat(werknemers[i].getAttribute("loon"));
+            totaalLoon += parseFloat(werknemers[i].getAttributeNode("loon").nodeValue);
+        }
+
+        document.getElementById("content").innerHTML =
+            "Het totaal van alle lonen is " + totaalLoon + " in oef2.xml";
+        // xmlDoc.getElementsByTagName("speler")[0].childNodes[0].nodeValue;
+    }
+</script>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Oefening 5</title>
+</head>
+
+<body>
+    <div id="content"></div>
+</body>
+<!-- <script src="xmlUtil.js"></script> -->
+<script>
+    // <!ELEMENT werknemers (afdeling)* >
+    // <!ELEMENT afdeling (arbeider*, bediende*) >
+    // <!ATTLIST afdeling id ID #REQUIRED >
+    // <!ELEMENT arbeider (naam) >
+    // <!ATTLIST arbeider loon CDATA #REQUIRED >
+    // <!ELEMENT bediende (naam) >
+    // <!ATTLIST bediende loon CDATA #REQUIRED >
+    // <!ELEMENT naam (#PCDATA) >
+
+    // Schrijf een functie geefLoon(afdeling, filenaam) waarmee je het totale loon van de arbeiders van een 
+    // bepaalde afdeling kunt berekenen. 
+
+    window.onload = function () {
+        openXmlDoc("XML-bestanden/oef5.xml", xmlDocReady);
+    }
+
+    function xmlDocReady(xml) {
+        var xmlDoc = xml.responseXML;
+
+        document.getElementById("content").innerHTML = "Loon afdeling magazijn: " + geefLoon("magazijn", xmlDoc);
+
+        document.getElementById("content").innerHTML += "\nLoon afdeling marketing: " + geefLoon("marketing", xmlDoc);
+    }
+
+    function openXmlDoc(filename, callBackXmlDocReady) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                callBackXmlDocReady(this);
+            }
+        };
+        xhttp.open("GET", filename, true);
+        xhttp.send();
+    }
+
+    function geefLoon(afdeling, xmlDoc) {
+        var loonTotaal = 0;
+
+        var werknemers = xmlDoc.getElementById(afdeling).children;
+        for (var i = 0; i < werknemers.length; i++) {
+            if (werknemers[i].nodeName === "arbeider") {
+                loonTotaal += parseFloat(werknemers[i].getAttribute("loon"));
+            }
+        }
+
+        return loonTotaal;
+    }
+</script>
+
+</html>

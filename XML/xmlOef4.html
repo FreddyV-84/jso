@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Oefening 3</title>
+</head>
+
+<body>
+    <div id="content"></div>
+</body>
+<!-- <script src="xmlUtil.js"></script> -->
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myFunction(this);
+        }
+    };
+    xhttp.open("GET", "XML-bestanden/oef4.xml", true);
+    xhttp.send();
+
+
+    function myFunction(xml) {
+        var xmlDoc = xml.responseXML;
+
+        var werknemers = xmlDoc.getElementsByTagName("werknemer");
+        var totaalLoon = 0;
+
+        for (var i = 0; i < werknemers.length; i++) {
+            var attrNode = werknemers[i].getAttributeNode("valuta");
+            var loon;
+            if (attrNode !== null) {
+                if (attrNode.nodeValue === "BEF") {
+                    loon = befToEur(parseFloat(werknemers[i].getAttributeNode("loon").nodeValue));
+                }
+                if (attrNode.nodeValue === "EUR") {
+                    loon = parseFloat(werknemers[i].getAttribute("loon"));
+                }
+            } else { // defualt in EUR
+                loon = parseFloat(werknemers[i].getAttribute("loon"));
+            }
+
+            totaalLoon += loon;
+        }
+
+        document.getElementById("content").innerHTML =
+            "Het totaal van alle lonen in EUR is " + totaalLoon.toFixed(2) + " in oef2.xml";
+        // xmlDoc.getElementsByTagName("speler")[0].childNodes[0].nodeValue;
+    }
+
+    function befToEur(befValue) {
+        return befValue / 40.3399;
+    }
+</script>
+
+</html>

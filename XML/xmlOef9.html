@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Oefening 9</title>
+</head>
+
+<body>
+    <div id="content"></div>
+</body>
+<!-- <script src="xmlUtil.js"></script> -->
+<script>
+    window.onload = function () {
+        //openXmlDoc("XML-bestanden/oef5.xml", xmlDocReady);
+
+        // <html>
+        //      <head>
+        //          <title>
+        //              De titel
+        //          </title>
+        //      </head>
+        //      <body>
+        //          De link: <a href="http://www.vdab.be">De VDAB</a>
+        //      </body>
+        // </html>
+
+        var doc = document.implementation.createDocument("", "html", null);
+        var serializer = new XMLSerializer();
+
+        // var html = doc.createElement("html");
+
+        var head = doc.createElement("head");
+
+        var title = doc.createElement("title");
+        var titleText = doc.createTextNode("De titel");
+
+        var body = doc.createElement("body");
+
+        var bodyText = doc.createTextNode("De link: ");
+        var aTag = doc.createElement("a");
+        var aTagText = doc.createTextNode("De VDAB");
+        var pTag = doc.createElement("p");
+        pTag.innerHTML = "<strong>De eerste</strong> inner para";
+        //var pTagText = doc.createTextNode("De eerste paragraaf");
+        
+        // doc.appendChild(html);
+        doc.documentElement.appendChild(head);
+        doc.documentElement.appendChild(body);
+        
+        head.appendChild(title);
+        title.appendChild(titleText);
+        
+        body.appendChild(bodyText);
+
+        aTag.setAttribute("href", "http://www.vdab.be");
+        aTag.appendChild(aTagText);
+        body.appendChild(aTag);
+        //pTag.appendChild(pTagText);
+        body.appendChild(pTag);
+
+
+        // document.getElementById("content").innerText = serializer.serializeToString(doc);
+        document.write(serializer.serializeToString(doc));
+    }
+
+    function xmlDocReady(xml) {
+        var xmlDoc = xml.responseXML;
+
+    }
+
+    function openXmlDoc(filename, callBackXmlDocReady) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                callBackXmlDocReady(this);
+            }
+        };
+        xhttp.open("GET", filename, true);
+        xhttp.send();
+    }
+</script>
+
+</html>

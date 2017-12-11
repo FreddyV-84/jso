@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Oefening 5</title>
+</head>
+
+<body>
+    <div id="content"></div>
+</body>
+<!-- <script src="xmlUtil.js"></script> -->
+<script>
+    window.onload = function () {
+        openXmlDoc("XML-bestanden/oef5.xml", xmlDocReady);
+    }
+
+    function xmlDocReady(xml) {
+        var xmlDoc = xml.responseXML;
+
+        document.getElementById("content").innerHTML = "Loon arbeiders afdeling magazijn: " + geefGemiddeldLoon(
+            "magazijn", xmlDoc);
+
+        document.getElementById("content").innerHTML += "\nLoon arbeiders afdeling marketing: " + geefGemiddeldLoon(
+            "marketing", xmlDoc);
+    }
+
+    function openXmlDoc(filename, callBackXmlDocReady) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                callBackXmlDocReady(this);
+            }
+        };
+        xhttp.open("GET", filename, true);
+        xhttp.send();
+    }
+
+    function geefLoon(afdeling, xmlDoc) {
+        var loonTotaal = 0;
+
+        var werknemers = xmlDoc.getElementById(afdeling).children;
+        for (var i = 0; i < werknemers.length; i++) {
+            loonTotaal += parseFloat(werknemers[i].getAttribute("loon"));
+        }
+
+        return loonTotaal;
+    }
+
+    function geefGemiddeldLoon(afdeling, xmlDoc) {
+        // geef gemiddeld loon van de arbeiders van een bepaalde afdeling terug
+        var loonArbeidersTotaal = 0;
+
+        // get first node with attributeName of "id"
+        var werknemers = xmlDoc.getElementById(afdeling).children;
+
+        for (var i = 0; i < werknemers.length; i++) {
+            if (werknemers[i].nodeName === "arbeider") {
+                loonArbeidersTotaal += parseFloat(werknemers[i].getAttribute("loon"));
+            }
+        }
+        return loonArbeidersTotaal / werknemers.length;
+    }
+</script>
+
+</html>
