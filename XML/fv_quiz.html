@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mendeljev Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+
+<body>
+    <h2>Mendeljev Quiz</h2>
+    <div id="quizContainer">
+        <div id="frameAnswers" style="display: none">
+            <div id="display"></div>
+            <input type="text" name="answer" id="txtAnswer">
+            <input type="button" value="Antwoord" id="btnAnswer">
+            <input type="button" value="topscores" id="btnTopScore">
+            <div id="remarks"></div>
+        </div>
+        <div id="frameTime" style="display:none"></div>
+        <div id="frameResults" style="display: none"></div>
+        <div id="frameStart">
+            <input type="button" value="Start Quiz" id="btnStart">
+        </div>
+        <div id="frameTopScore" style="display:none">
+            <div id="topScore"></div>
+            <input type="button" value="speel opnieuw" id="btnReset">
+        </div>
+    </div>
+</body>
+<script src="fv_quiz.js"></script>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="fvXmlUtils.js"></script>
+    <script>
+        'use strict';
+        var xmlDoc, xslDoc;
+
+        window.onload = function () {
+            loadXMLDoc("XML-bestanden/books.xml", xmlDocReady);
+        }
+
+        function xmlDocReady(xml) {
+            xmlDoc = xml.responseXML;
+            loadXMLDoc("XML-bestanden/books.xsl", xslDocReady);
+        }
+
+        function xslDocReady(xsl) {
+            xslDoc = xsl.responseXML;
+            transform();
+        }
+
+        function transform() {
+            // code for IE
+            if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
+                var ex = xmlDoc.transformNode(xslDoc);
+                document.getElementById("example").innerHTML = ex;
+            }
+            // code for Chrome, Firefox, Opera, etc.
+            else if (document.implementation && document.implementation.createDocument) {
+                var xsltProcessor = new XSLTProcessor();
+                xsltProcessor.importStylesheet(xslDoc);
+                var resultDocument = xsltProcessor.transformToDocument(xmlDoc);
+
+
+                var serializer = new XMLSerializer();
+
+                document.write(serializer.serializeToString(resultDocument));
+                //console.log(serializer.serializeToString(resultDocument));
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

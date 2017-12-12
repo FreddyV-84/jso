@@ -1,0 +1,37 @@
+html {
+    background-color: #352b52;
+    color: #E7E3F4;
+}
+
+body {
+    background-color: #433866;
+    margin: 0 auto;
+    padding: 20px;
+    width: 50%;
+    height: 100vh;
+}
+
+h2{
+    border-bottom: 5px solid #8876c5;
+    box-shadow: #362d52 2px 8px 1px -4px;
+}
+
+#quizContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+input {
+    background-color: #6b55b9;
+    color: #d9d0f7;
+    outline: none;
+    border: 3px solid #8876c5;
+}
+
+#frameResults {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 20px;
+    color: #f9b9db;
+}

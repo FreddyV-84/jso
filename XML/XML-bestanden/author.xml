@@ -26,4 +26,9 @@
     <name>James Joyce</name>
     <age>32</age>
   </author>
+  <smurf>
+    <tag1>
+      <name>lolsmurf</name>
+    </tag1>
+  </smurf>
 </authors>
