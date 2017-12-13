@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AJAX: Dataset ophalen</title>
+    <style>
+        .toiletTable {
+            border-collapse: collapse;
+            border: 3px solid #c7c83a;
+        }
+
+        .toiletTable tr:first-child {
+            font-weight: 600;
+        }
+
+        .toiletTable tr:nth-child(even) {
+            background-color: #dbde16;
+        }
+
+        .toiletTable tr:nth-child(odd) {
+            background-color: #c7c73a;
+        }
+
+        #result {
+            border: 4px solid #707023;
+            width: fit-content;
+        }
+    </style>
+    <script>
+        var xmlHttp = false;
+
+        function loadXMLHttpRequest() {
+            try { // Firefox/Opera/Safari/IE7+
+                xmlHttp = new XMLHttpRequest();
+            } catch (e) {
+                try { // IE5
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try { // IE6
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        alert("Deze browser ondersteunt geen AJAX");
+                    }
+                }
+            }
+        }
+
+
+        function fetchStuff() {
+            var url = "ploeg.xml";
+            fetch(url).then(function (response) {
+                return response.text();
+            }).then(function (responseAsText) {
+                updateStuff(responseAsText)
+            });
+        }
+
+
+
+        function updateStuff(responseAsText) {
+            var resultDiv = document.getElementById("result");
+            var parser = new DOMParser();
+            var xmlDoc = parser.parseFromString(responseAsText, "text/xml");
+
+            var spelers = xmlDoc.getElementsByTagName("speler");
+
+            var spelersTable = document.createElement("table");
+            spelersTable.className = "toiletTable";
+
+            var headerRow = spelersTable.insertRow();
+            headerRow.insertCell(0).textContent = "naam";
+            headerRow.insertCell(1).textContent = "nummer";
+            headerRow.insertCell(2).textContent = "aantal doelpunten";
+
+            for (var i = 0; i < spelers.length; i++) {
+                var spelerRow = spelersTable.insertRow();
+                spelerRow.insertCell(0).textContent = getNodeValue(spelers[i], "naam");
+                spelerRow.insertCell(1).textContent = getNodeValue(spelers[i], "nummer");
+                spelerRow.insertCell(2).textContent = getNodeValue(spelers[i], "aantal-doelpunten");
+            }
+            resultDiv.textContent = "";
+            resultDiv.appendChild(spelersTable);
+        }
+
+        function getStuff() {
+            var scriptElement = document.createElement("script");
+            scriptElement.id = "JSONPadding"
+            scriptElement.src = "http://gumball.wickedlysmart.com?callback=updateRegions";
+
+            var oldScriptElement = document.getElementById("JSONPadding");
+            var head = document.getElementsByTagName("head")[0];
+
+            if (oldScriptElement == null) {
+                head.appendChild(scriptElement);
+            } else {
+                head.replaceChild(scriptElement, oldScriptElement);
+            }
+        }
+
+        function updateRegions(regions) {
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "";
+            for (var i = 0; i < regions.length; i++) {
+                resultDiv.innerHTML += '<div><h3>' + regions[i].name + '</h3>';
+                resultDiv.innerHTML += '<p>number of sales: ' + regions[i].sales + '</p></div>';
+            }
+        }
+
+
+        function dataOphalenJSON() {
+            if (xmlHttp) {
+                xmlHttp.open("GET", "http://datasets.antwerpen.be/v4/gis/openbaartoilet.json", true);
+
+                resultDiv = document.getElementById("result");
+
+                xmlHttp.onload = function () {
+                    if (xmlHttp.status === 200) {
+
+
+                        var response = JSON.parse(xmlHttp.responseText);
+                        var records = response.data;
+
+                        var toiletTable = document.createElement("table");
+                        toiletTable.className = "toiletTable";
+
+                        var headerRow = toiletTable.insertRow();
+                        headerRow.insertCell(0).textContent = "Omschrijving";
+                        headerRow.insertCell(1).textContent = "Straat en huisnummer";
+                        headerRow.insertCell(2).textContent = "District";
+
+                        for (var r = 0; r < records.length; r++) {
+
+                            var row = toiletTable.insertRow();
+
+                            var omschrijving = row.insertCell(0);
+                            var straatNr = row.insertCell(1);
+                            var postcodeDistrict = row.insertCell(2);
+
+                            omschrijving.textContent = records[r].omschrijving;
+                            straatNr.textContent = records[r].straat + " " + records[r].huisnummer;
+                            postcodeDistrict.textContent = records[r].postcode + " " + records[r].district;
+                        }
+                        resultDiv.textContent = "";
+                        resultDiv.appendChild(toiletTable);
+                    }
+                }
+
+                xmlHttp.onprogress = function (pe) {
+                    resultDiv.textContent = "Aanvraag bezig";
+                    console.log("aanvraag bezig");
+                    if (pe.lengthComputable) {
+                        resultDiv += "(" + pe.loaded + "/" + pe.total + ")";
+                        console.log("%s van %s geladen", pe.loaded, pe.total);
+                    }
+                }
+
+                xmlHttp.onerror = function () {
+                    resultDiv.textContent = "fout bij verwerking aanvraag";
+                    console.log("fout bij verwerking aanvraag");
+                }
+
+                xmlHttp.onabort = function () {
+                    resultDiv.textContent = "aanvraag onderbroken";
+                    console.log("aanvraag onderbroken");
+                }
+
+                xmlHttp.send(null);
+            }
+        }
+
+        function dataOphalenXML() {
+            if (xmlHttp) {
+                xmlHttp.open("GET", "http://datasets.antwerpen.be/v4/gis/openbaartoilet.xml", true);
+
+                resultDiv = document.getElementById("result");
+
+                xmlHttp.onload = function () {
+                    if (xmlHttp.status === 200) {
+
+
+                        var response = xmlHttp.responseXML;
+                        var records = response.getElementsByTagName("record");
+
+                        var toiletTable = document.createElement("table");
+                        toiletTable.className = "toiletTable";
+
+                        var headerRow = toiletTable.insertRow();
+                        headerRow.insertCell(0).textContent = "Omschrijving";
+                        headerRow.insertCell(1).textContent = "Straat en huisnummer";
+                        headerRow.insertCell(2).textContent = "District";
+
+                        for (var r = 0; r < records.length; r++) {
+
+                            var row = toiletTable.insertRow();
+
+                            var omschrijving = row.insertCell(0);
+                            var straatNr = row.insertCell(1);
+                            var postcodeDistrict = row.insertCell(2);
+
+                            omschrijving.textContent = getNodeValue(records[r], "omschrijving");
+                            straatNr.textContent = getNodeValue(records[r], "straat") + " " + getNodeValue(
+                                records[
+                                    r], "huisnummer");
+                            postcodeDistrict.textContent = getNodeValue(records[r], "postcode") + " " +
+                                getNodeValue(records[r], "district");
+                        }
+                        resultDiv.textContent = "";
+                        resultDiv.appendChild(toiletTable);
+                    }
+                }
+
+                xmlHttp.onprogress = function (pe) {
+                    resultDiv.textContent = "Aanvraag bezig";
+                    console.log("aanvraag bezig");
+                    if (pe.lengthComputable) {
+                        resultDiv += "(" + pe.loaded + "/" + pe.total + ")";
+                        console.log("%s van %s geladen", pe.loaded, pe.total);
+                    }
+                }
+
+                xmlHttp.onerror = function () {
+                    resultDiv.textContent = "fout bij verwerking aanvraag";
+                    console.log("fout bij verwerking aanvraag");
+                }
+
+                xmlHttp.onabort = function () {
+                    resultDiv.textContent = "aanvraag onderbroken";
+                    console.log("aanvraag onderbroken");
+                }
+
+                xmlHttp.send(null);
+            }
+        }
+
+        function getNodeValue(obj, tag) {
+            return obj.getElementsByTagName(tag)[0].textContent;
+        }
+    </script>
+</head>
+
+<body onload="loadXMLHttpRequest()">
+    <input type="button" value="Haal gegevens op" onclick="dataOphalenJSON()" />
+    <input type="button" value="Get Stuff" onclick="getStuff()">
+    <input type="button" value="Fetch Stuff" onclick="fetchStuff()">
+    <div id="result">
+    </div>
+</body>
+
+</html>

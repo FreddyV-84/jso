@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ereburgers</title>
+    <link rel="stylesheet" href="fv_ereburgers.css">
+</head>
+
+<body>
+    <div class="medal" id="medalLeft"></div>
+    <div id="wrapper">
+        <div id="filterBox">
+            <input type="text" id="txtFilter">
+            <input type="button" value="filter" id="btnFilter">
+        </div>
+        <div id="dataBoxHeader">
+            <table>
+                <tr>
+                    <td>naam</td>
+                    <td>functie</td>
+                    <td>datum</td>
+                </tr>
+            </table>
+        </div>
+        <div id="dataBox"></div>
+        <div id="paginationBox">
+            <select name="nbrRows" id="nbrRows">
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+            </select>
+            <input type="button" value="&lt&lt" id="btnPrevious">
+            <input type="button" value="&gt&gt" id="btnNext">
+            <span id="pagination"></span>
+        </div>
+    </div>
+    <div class="medal" id="medalRight"></div>
+</body>
+<script src="fv_ereburgers.js"></script>
+
+</html>
