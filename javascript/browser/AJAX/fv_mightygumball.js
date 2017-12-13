@@ -10,6 +10,7 @@ function windowLoaded() {
 
 function loadSalesAsynchronous() {
     xhr.open('GET', 'sales.json', true);
+    // xhr.open('GET', 'http://gumball.wickedlysmart.com', true);
     xhr.send('extra info');
 
     xhr.onload = function () {
@@ -24,7 +25,7 @@ function updateSales(responseObject) {
     var newContent = '';
 
     for (var i = 0; i < responseObject.length; i++) {
-        newContent += '<div>';
+        newContent += '<div class="saleItem">';
         newContent += responseObject[i].name;
         newContent += ' sold ' + responseObject[i].sales + ' gumballs';
         newContent += '</div>'
