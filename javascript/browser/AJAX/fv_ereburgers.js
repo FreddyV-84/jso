@@ -14,7 +14,7 @@ window.onload = function () {
         numberOfRecords = parseInt(nbrRows.options[nbrRows.selectedIndex].value);
         fetchDataAndUpdate(txtFilter.value, numberOfRecords, ((page - 1) * numberOfRecords), "date");
     })
-    
+
     page = 1;
     numberOfRecords = parseInt(nbrRows.options[nbrRows.selectedIndex].value);
     fetchDataAndUpdate(txtFilter.value, numberOfRecords, ((page - 1) * numberOfRecords), "date");
@@ -54,7 +54,8 @@ function updateDOM(responseJSON) {
         var row = tableElement.insertRow();
         row.insertCell(0).textContent = responseJSON.records[i].fields.nom;
         row.insertCell(1).textContent = responseJSON.records[i].fields.functie;
-        row.insertCell(2).textContent = responseJSON.records[i].fields.date;
+        var localDate = new Date(responseJSON.records[i].fields.date).toLocaleDateString();
+        row.insertCell(2).textContent = localDate;
     }
     dataBox.textContent = "";
     dataBox.appendChild(tableElement);

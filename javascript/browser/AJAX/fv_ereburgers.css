@@ -130,6 +130,11 @@ select {
     font-weight: 600;
 }
 
+
 input:hover, select:hover {
     background-color: #af024a;
+}
+
+input:focus {
+    background-color: #8a023a;
 }
