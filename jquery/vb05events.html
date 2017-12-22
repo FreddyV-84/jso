@@ -43,8 +43,8 @@
                 let naam = $('#naam').val();
                 let prijs = parseInt($('#prijs').val());
                 let p = new Product(naam, prijs);
-                zetProductInTabel(p);
                 producten.push(p);
+                zetProductInTabel(p);
                 berekenTotaal();
                 $('#naam').val('');
                 $('#prijs').val('');

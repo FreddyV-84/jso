@@ -1,21 +1,101 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Google</title>
+    <style>
+        #frm {
+            display: flex;
+            flex-flow: row wrap;
+            margin: 0 auto;
+            width: 400px;
+            background-color: #1363dd;
+            padding: 10px 20px;
+            border: 2px solid hsla(217, 84%, 28%, 1);
+            border-radius: 5px;
+        }
+
+        .row {
+            width: 100%;
+            margin: 5px 0;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+        }
+
+        .row:last-child {
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+        label {
+            min-width: 100px;
+        }
+
+        #error {
+            margin-left: 10px;
+            color: #fff222;
+        }
+
+        input,
+        select {
+            background-color: hsla(217, 84%, 81%, 1);
+            outline: none;
+            border: 1px solid hsla(217, 84%, 28%, 1);
+            border-radius: 5px;
+            width: 120px;
+        }
+
+        #btnSearch{
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-    <ol>
-        <li>Maak een form waarmee je in Google kunt zoeken</li>
-        <li>Voeg na het inputveld een span-toe waarin je een foutmelding kunt zetten</li>
-        <li>Test bij het klikken op de knop of het inputveld is ingevuld. Wanneer
-            dat niet het geval is, moet je een foutmelding tonen en mogen de form gegevens niet verstuurd worden.
-        </li>
-        <li>Je kunt in Google zoeken op een bepaalde taal via name=lr. Mogelijke talen zijn 'lang_nl', 'lang_fr', .... Voeg een select-element toe waarmee je kunt kiezen tussen Nederlands, Frans en alle talen (value="")</li>
-        <li>Je kunt in Google zoeken naar websites in een bepaald land via name=cr. Mogelijke landen zijn 'countryBE', 'countryNL', 'countryFR'.... Voeg een select-element toe waarmee je kunt kiezen tussen België, Nederland, Frankrijk en alle landen </li>
-        <li>Zorg ervoor dat er een foutmelding verschijnt wanneer iemand probeert te zoeken naar Franstalige websites in Nederland.</li>
-    </ol>
+    <form id="frm" action="http://www.google.be/search">
+        <div class="row">
+            <label for="txtSearch">Zoekterm</label>
+            <input type="text" name="q" id="txtSearch">
+            <span id="error"></span>
+        </div>
+        <div class="row">
+            <label for="selLanguage">Taal</label>
+            <select name="lr" id="selLanguage">
+                <option value="lang_nl">
+                    Nederlands
+                </option>
+                <option value="lang_fr">
+                    Frans
+                </option>
+                <option value="">
+                    Alle talen
+                </option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="selCountry">Land</label>
+            <select name="cr" id="selCountry">
+                <option value="countryBE">
+                    België
+                </option>
+                <option value="countryNL">
+                    Nederland
+                </option>
+                <option value="countryFR">
+                    Frankrijk
+                </option>
+            </select>
+        </div>
+        <div class="row">
+            <input id="btnSearch" type="submit" value="Verzenden">
+        </div>
+    </form>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script src="oef03events.js"></script>
+
 </html>

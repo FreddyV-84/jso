@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Items</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 100px 100px;
+            grid-row-gap: 5px;
+            margin: 20px 0;
+        }
+
+        label {
+            grid-column-start: 1;
+            text-align: left;
+        }
+
+        input[type=button] {
+            grid-column-start: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+
+        <div class="container">
+            <label for="txtName">Naam</label>
+            <input type="text" id="txtName">
+            <label for="txtPrice">Prijs</label>
+            <input type="text" id="txtPrice">
+            <input type="button" value="Voeg toe" id="btnAdd">
+        </div>
+        <table id="items">
+            <tr>
+                <td>Item</td>
+                <td>Prijs</td>
+            </tr>
+        </table>
+        <div class="container">
+            <label for="txtTotal">Totaal</label>
+            <input type="text" id="txtTotal"></input>
+        </div>
+    </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script>
+    'use strict';
+
+    $(document).ready(function () {
+        $('#btnAdd').on("click", function () {
+            let price = parseInt($('#txtPrice').val(), 10);
+
+            //Try to get tbody first with jquery children. works faster!
+            let tbody = $('#items').children('tbody');
+
+            //Then if no tbody just select your table 
+            let table = tbody.length ? tbody : $('#items');
+
+            let nameTD = $('<td>');
+            nameTD.text($('#txtName').val());
+
+            let priceTD = $('<td>');
+            priceTD.text(price);
+
+            let btn = $('<td><input type="button" value="verwijder"></td>');
+            btn.on("click", function () {
+                $(this).parent().hide(500, () => {
+                    $(this).parent().remove();
+                });
+
+                updateTotal();
+            })
+
+            let rowTR = $('<tr>');
+            rowTR.append(nameTD);
+            rowTR.append(priceTD);
+            rowTR.append(btn);
+
+            //Add row
+            table.append(rowTR);
+
+            // update total
+            updateTotal();
+        })
+
+    });
+
+    function updateTotal() {
+        let total = 0;
+        $('#items tr:gt(0) td:nth-child(2)').each(function () {
+            total += parseInt($(this).text());
+        });
+
+        $('#txtTotal').val(total);
+    }
+</script>
+
+</html>

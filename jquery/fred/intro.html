@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style>
+        a.test {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="http://jquery.com/">jQuery</a>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $("a").click(function (event) {
+            event.preventDefault();
+            alert("Thanks for visiting!");
+            $(this).hide(2000);
+        });
+
+        $('a').addClass("test");
+        $('a').removeClass("test");
+    });
+</script>
+
+</html>

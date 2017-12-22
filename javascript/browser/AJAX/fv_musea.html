@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lijst van musea in Antwerpen en Brussel</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+        }
+
+        #sectionMapHeaders {
+            display: inline-flex;
+            flex-flow: row nowrap;
+            justify-content: space-around;
+            flex: 1 1 auto;
+            padding: 0;
+            min-height: 50px;
+        }
+
+        #sectionMaps {
+            display: inline-flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            flex: 1 1 auto;
+            margin: 0;
+            padding: 0;
+            min-height: 300px;
+        }
+
+        #sectionMuseums {
+            flex: 1 1 300px;
+        }
+
+        .map {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            flex: 1 1 auto;
+            border: 1px solid #333;
+        }
+
+        .mapHeader {
+            line-height: 50px;
+            text-decoration: underline;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        thead {
+            background-color: #999;
+        }
+
+        .selectedRow {
+            background-color: #82aed4;
+        }
+
+        .sortAsc::after {
+            content: " +";
+        }
+
+        .sortDes::after {
+            content: " -";
+        }
+    </style>
+</head>
+
+<body>
+    <section id="sectionMapHeaders">
+        <div class="mapHeader">Antwerpen</div>
+        <div class="mapHeader">Brussel</div>
+    </section>
+    <section id="sectionMaps">
+        <div id="mapAntwerp" class="map"></div>
+        <div id="mapBrussels" class="map"></div>
+    </section>
+    <section id="sectionMuseums" class="">
+        <table>
+            <thead>
+                <tr class="header">
+                    <th id="cityHeader" class="sortAsc">Stad</th>
+                    <th id="museumHeader">Museum</th>
+                    <th id="addressHeader">Adres</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyMuseums">
+
+            </tbody>
+        </table>
+    </section>
+
+    <script src="fv_musea.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqEEBdDHjLhmvjw5GhOdpBf_3af7ZLiEA&callback=initMap"></script>
+</body>
+
+</html>
