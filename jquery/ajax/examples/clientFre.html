@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery AJAX</title>
+    <style>
+        .container {
+            display: flex;
+            flex-flow: row wrap;
+            width: 406px;
+            border: 1px solid gray;
+            padding: 10px;
+        }
+
+        label {
+            width: 150px;
+        }
+
+        input {
+            width: 250px;
+            margin: 5px 0;
+        }
+
+        #btnCreate {
+            flex: 1 0 auto;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#btnGet').click(function () {
+                populateTable();
+            })
+
+            $('#btnGetByID').click(function () {
+                var id = $('#nbrID').val();
+                if (id !== "") {
+                    id = parseInt(id);
+                    if (id > 0) {
+                        $.ajax('http://localhost:8080/namen', {
+                            method: 'GET',
+                            dataType: 'json',
+                            data: {
+                                id: id // querystring ?id=2
+                            }
+                        }).done(function (data) {
+                            $('#tblData').find('tbody').empty();
+                            $("#tblData").find('tbody')
+                                .append($('<tr>')
+                                    .append($('<td>').text(data.id))
+                                    .append($('<td>').text(data.voornaam))
+                                    .append($('<td>').text(data.achternaam))
+                                    .append($('<td>').append($('<button>').text("verwijder").click(
+                                        function () {
+                                            deleteByID($(this).parent().parent().first()
+                                                .text());
+                                            $(this).parent().parent().remove();
+                                        }))));
+                        }).fail(function (obj, err, msg) {
+                            console.log(msg);
+                        })
+                    } else {
+                        alert("getal moet groter dan 0 zijn.");
+                    }
+                } else {
+                    alert("gelieve een id in te geven");
+                }
+            })
+
+            $('#btnDelete').click(function () {
+                deleteByID(3);
+            })
+
+            $('#btnCreate').click(function () {
+                var id = parseInt($('#nbrCreateID').val());
+                var firstName = $('#txtFirstName').val();
+                var lastName = $('#txtLastName').val();
+
+                console.log(id);
+
+                if (!isNaN(id) && firstName !== "" && lastName !== "") {
+                    $.ajax('http://localhost:8080/namen', {
+                        method: 'POST',
+                        data: JSON.stringify({
+                            id: id,
+                            voornaam: firstName,
+                            achternaam: lastName
+                        })
+                    }).done(function (data) {
+                        console.log("zangeres created");
+                        populateTable();
+                    }).fail(function (obj, err, msg) {
+                        console.log(msg);
+                    })
+                } else {
+                    alert("gelieve zowel een id, een voornaam als een achternaam te voorzien.")
+                }
+
+            })
+
+            function populateTable() {
+                $.ajax('http://localhost:8080/namen', {
+                    method: 'GET',
+                    dataType: 'json'
+                }).done(function (data) {
+                    $('#tblData').find('tbody').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $("#tblData").find('tbody')
+                            .append($('<tr>')
+                                .append($('<td>').text(data[i].id))
+                                .append($('<td>').text(data[i].voornaam))
+                                .append($('<td>').text(data[i].achternaam))
+                                .append($('<td>').append($('<button>').text("verwijder").click(
+                                    function () {
+                                        deleteByID($(this).parent().parent().first()
+                                            .text());
+                                        $(this).parent().parent().remove();
+                                    })))
+                            );
+                    }
+                    console.log(data);
+                    console.dir(data);
+                    console.table(data);
+                }).fail(function (obj, err, msg) {
+                    console.dir(obj);
+                    console.dir(err);
+                    console.dir(msg);
+                });
+            }
+
+            function deleteByID(id) {
+                console.log("deleteByID:" + id);
+                $.ajax('http://localhost:8080/namen?id=' + id, {
+                    method: 'DELETE',
+                    dataType: 'json'
+                }).done(function (data) {
+                    console.log(data);
+                }).fail(function (obj, err, msg) {
+                    console.log(msg);
+                })
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <button id="btnGet">Get Data</button>
+    <button id="btnGetByID">Get Data By ID</button>
+    <input type="number" id="nbrID">
+    <button id="btnDelete">Delete By ID</button>
+    <div class="container">
+        <label for="nbrCreateID">ID</label>
+        <input type="number" id="nbrCreateID">
+        <label for="txtFirstName">Voornaam</label>
+        <input type="text" id="txtFirstName">
+        <label for="txtLastName">Achternaam</label>
+        <input type="text" id="txtLastName">
+        <button id="btnCreate">Create</button>
+    </div>
+    <table id="tblData">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Voornaam</th>
+                <th>Achternaam</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+
+</html>
