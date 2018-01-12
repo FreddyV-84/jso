@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vakantiebestemming</title>
+    <style>
+        form {
+            display: flex;
+            flex-flow: column nowrap;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .row {
+            border: 1px solid black;
+            width: 350px;
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
+        .row:nth-child(5){
+            justify-content: flex-end;
+        }
+
+        label {
+            width: 150px;
+        }
+
+        input[type="submit"] {
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Geef de informatie over uw favoriete </h2>
+    <form action="http://127.0.0.1:8083/" method="POST">
+        <div class="row">
+            <label for="txtName">naam</label>
+            <input type="text" name="txtName" id="txtName">
+        </div>
+        <div class="row">
+            <label for="rdoGender">geslacht</label>
+            <div class="innerRow">
+                <input type="radio" name="rdoGender" id="rdoMale" value="male" checked>
+                <label for="rdoMale">Mannelijk</label>
+                <input type="radio" name="rdoGender" id="rdoFemale" value="female">
+                <label for="rdoFemale">Vrouwelijk</label>
+            </div>
+        </div>
+        <div class="row">
+            <label for="selDestination">bestemming</label>
+            <select name="selDestination" id="selDestination">
+                <option>Barcelona</option>
+                <option>Malaga</option>
+                <option>Kaapstad</option>
+            </select>
+        </div>
+        <div class="row">
+            <input type="checkbox" name="chkIsMember" id="chkIsMember">
+            <label for="chkIsMember">lid</label>
+        </div>
+        <div class="row">
+            <input type="submit" value="Registreer">
+        </div>
+    </form>
+</body>
+
+</html>
