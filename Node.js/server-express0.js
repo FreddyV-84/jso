@@ -25,7 +25,7 @@ app.get('/*', function(request, response){
     var naam = request.query.naam;
     console.log("naam en voornaam uit de querystring: %s %s", naam, voornaam);
     console.log("request met method get received");
-    response.send("request met get wordt verwerkt");
+    response.send("request met get wordt verwerkt: voornaam=" + voornaam + ";naam=" + naam);
 });
 
 // request method=POST
