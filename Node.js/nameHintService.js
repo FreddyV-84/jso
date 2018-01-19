@@ -6,27 +6,26 @@ var url = require("url");
 var names = [
     "Anna", "Brittany", "Cinderella", "Diana", "Eva", "Fiona", "Gunda", "Hege", "Inga", "Johanna", "Kitty", "Linda", "Nina",
     "Ophelia", "Petunia", "Amanda", "Raquel", "Cindy", "Doris", "Eve", "Evita", "Sunniva", "Tove", "Unni", "Violet", "Liza",
-    "Elizabeth", "Ellen", "Wenche", "Vicky"];
+    "Elizabeth", "Ellen", "Wenche", "Vicky"
+];
 
 function findHints(q) {
     var hint = "";
     if (q.length > 0) {
-        for (var i = 0; i < 30; i++) {
+        for (var i = 0; i < names.length; i++) {
             if (names[i].toUpperCase().startsWith(q.toUpperCase())) {
                 if (hint == "") {
                     hint = names[i];
-                }
-                else {
+                } else {
                     hint += " , " + names[i];
                 }
             }
         }
     }
-    if (hint == ""){
-        return "No suggestion found.";
-    }
-    else{
-        return hint;
+    if (hint == "") {
+        return "No suggestion found.\n";
+    } else {
+        return hint + "\n";
     }
 }
 

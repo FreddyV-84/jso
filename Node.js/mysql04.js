@@ -11,29 +11,29 @@ function updateRecord(row, callback) {
 		user: 'root',
 		password: 'root',
 		database: 'deschop',
-		port: 3307
+		port: 3306
 	});
 
 	connection.connect();
 	connection.query('UPDATE leveranciers SET adres = ?, woonplaats = ? WHERE lev_code = ?',
-		row, function (err, result) {
+		row,
+		function (err, result) {
 			if (err) {
 				callback(err, result);
 
 			} else {
 				callback(null, result);
 			}
+			connection.end();
 		});
-	connection.end();
 }
 
-var row = ['Grote Vliegenzwam', 'Smurfenstad', '997']; 
+var row = ['Grote Vliegenzwam', 'Smurfenstad', '997'];
 updateRecord(row, function (err, result) {
 	if (err) {
 		console.log('Error while performing query.');
 		console.log(err);
-	}
-	else {
+	} else {
 		console.log("%d rows affected", result.affectedRows);
 	}
-});   
+});

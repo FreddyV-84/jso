@@ -8,10 +8,10 @@ var connection = mysql.createConnection({
   user: 'root',
   password: 'root',
   database: 'deschop',
-  port: 3307
+  port: 3306
 });
 
-var kleur = "rood";
+var kleur = "groen";
 connection.connect();
 var identifiers = ['plantennaam', 'planten', 'kleur', kleur];
 connection.query('SELECT ?? from ?? WHERE ?? = ?', identifiers, function (err, rows, fields) {
