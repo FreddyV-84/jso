@@ -26,8 +26,8 @@ function insertRecords(rows, callback) {
 		} else {
 			callback(null, results);
 		}
+		connection.end();
 	});
-	connection.end();
 }
 
 var row1 = { lev_code: '998', lev_naam: 'GROTE SMURF', adres: 'Paddenstoel 1', woonplaats: 'Smurfendorp', korting: 0 };

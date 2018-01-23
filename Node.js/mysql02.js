@@ -22,4 +22,8 @@ connection.query('SELECT ??, ?? from ??', identifiers, function (err, rows, fiel
     console.log('Error while performing query.');
   }
   connection.end();
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 39ad9fe5611d228b6cae9aba17a47aa6e33980f5
