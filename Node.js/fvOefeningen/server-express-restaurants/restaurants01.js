@@ -15,11 +15,15 @@ $(function () {
     }
 
     function populateTable(result) {
-        var block = "";
-        for (var i = 0; i < result.length; i++) {
-            block += "<p>" + result[i].name + "</p>";
-        }
-        $('#dataBlock').html(block);
+        $.each(result, function (i, item) {
+            $('<tr>').append(
+                $('<td>').text(i+1),
+                $('<td>').text(item.name),
+                $('<td>').text(item.address.street),
+                $('<td>').text(item.borough),
+                $('<td>').text(item.cuisine)
+            ).appendTo('#restoTable');
+        });
     }
 
 });
