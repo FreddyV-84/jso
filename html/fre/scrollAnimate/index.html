@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll</title>
+    <style>
+        #section1,
+        #section2 {
+            height: 800px;
+        }
+
+        #section1 {
+            background-color: darkgoldenrod;
+        }
+
+        #section2 {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="section1">
+        <a href="#section2" id="linkSection1">Go to section 2</a>
+    </div>
+    <div id="section2">
+        <a href="#section1" id="linkSection2">Go to section 1</a>
+    </div>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+    <script>
+        $(function () {
+            $('#section1').click(function (e) {
+                e.preventDefault()
+                $(window).scrollTo($('#section2'), 300, {
+                    offset: 5
+                });
+            });
+        })
+    </script>
+</body>
+
+</html>

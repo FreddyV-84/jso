@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runners</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <ul class="tabs group">
+            <li>
+                <a class="active" href="#/one" id="maleTimes">Male Times</a>
+            </li>
+            <li>
+                <a href="#/two" id="femaleTimes">Female Times</a>
+            </li>
+            <li>
+                <a href="#/three" id="allTimes">All Times</a>
+            </li>
+            <li>
+                <a href="#/four" id="addRunner">Add runner</a>
+            </li>
+        </ul>
+
+        <div id="content">
+            <div id="one" class="content">
+                <table id="tblMaleTimes">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="two" class="content" style="display:none">
+                <table id="tblFemaleTimes">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="three" class="content" style="display:none">
+                <table id="tblAllTimes">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Gender</th>
+                            <th>
+                                <a href="#" id="sortTime">
+                                    <i class="fas fa-sort-amount-down"></i>Time
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="four" class="content" style="display:none">
+                <form id="frmAddRunner" action="http://localhost:8888/runners/add" method="POST">
+                    <div id="formContainer">
+                        <div class="formRow">
+                            <label for="txtFirstName">first name</label>
+                            <input type="text" name="txtFirstName" id="txtFirstName">
+                        </div>
+                        <div class="formRow">
+                            <label for="txtLastName">last name</label>
+                            <input type="text" name="txtLastName" id="txtLastName">
+                        </div>
+                        <div class="formRow">
+                            <label for="selGender">gender</label>
+                            <select name="selGender" id="selGender">
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                            </select>
+                        </div>
+                        <div class="formRow">
+                            <label for="nbrHours">time (h/m/s)</label>
+                            <div class="inline-block">
+                                <input type="number" name="nbrHours" id="nbrHours" min="0" max="9">
+                                <input type="number" name="nbrMinutes" id="nbrMinutes" min="0" max="60">
+                                <input type="number" name="nbrSeconds" id="nbrSeconds" min="0" max="60">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottomRow">
+                        <input type="submit" id="btnAddRunner" value="Add runner">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
