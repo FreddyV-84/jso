@@ -15,6 +15,6 @@ import { Vb00Component } from './vb00/vb00.component';
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent] // welke componenten implementeren we op index.html app-root
+  bootstrap: [Vb00Component] // welke componenten implementeren we op index.html app-root
 })
 export class AppModule { }
