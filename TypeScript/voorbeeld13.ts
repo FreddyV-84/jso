@@ -23,12 +23,24 @@ class Horse extends Animal {
     }
 }
 
-let sam: Animal = new Snake("Sammy the Python");
-let tom: Animal = new Horse("Tommy the Palomino");
+// let sam: Animal = new Snake("Sammy the Python");
+// let tom: Animal = new Horse("Tommy the Palomino");
 
-sam.move();
-tom.move(34);
+// sam.move();
+// tom.move(34);
 
 // let tim: Animal = 
 //    new Animal("Timmy the dangerous ('all animals are dangerous')");  // compileerfout;
 // want je kunt geen instantie van een abstracte klasse maken
+
+let animals: Animal[] = [];
+animals.push(new Horse("Paardje"));
+animals.push(new Horse("Hupje"));
+animals.push(new Snake("Bijterke"));
+animals.push(new Snake("Gladius"));
+animals.push(new Snake("Slimmerus"));
+animals.push(new Horse("Black Beauty"));
+
+for (let i = 0; i < animals.length; i++) {
+    animals[i].move();
+}
