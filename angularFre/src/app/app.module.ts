@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { Vb00Component } from './vb00/vb00.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent    // klassenamen van componenten die in deze module gedefinieerd zijn
+    AppComponent,
+    Vb00Component    // klassenamen van componenten die in deze module gedefinieerd zijn
   ],
   imports: [
     BrowserModule
