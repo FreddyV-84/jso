@@ -56,7 +56,7 @@ figuren.push(new Rechthoek("blauw", 2, 3));
 figuren.push(new Rechthoek("groen", 4, 5));
 figuren.push(new Cirkel("geel", 1.5));
 for (let figuur of figuren) {
-    console.log("een %s met eigenschappen: ", figuur.soort);
+    console.log("een %s met eigensch@ppen: ", figuur.soort);
     console.log("\tkleur: %s\tomtrek: %s\toppervlakte: %s", figuur.kleur,
         figuur.omtrek, figuur.oppervlakte);
 }
