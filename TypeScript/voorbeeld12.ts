@@ -1,7 +1,11 @@
 /* super, polymorfisme */
 
 class Animal {
-    constructor(public name: string) {  }
+    // v1
+    // constructor(public name: string) {  }
+
+    // v2
+    constructor(public name: string, public domestic:boolean = false) {  }
 }
 
 class Rhino extends Animal {
@@ -20,4 +24,5 @@ let employee: Employee = new Employee("Bob");
 
 animal = rhino;  // een object van een subklasse kan gebruikt worden
 // waar een object van de basisklasse verwacht wordt
-// animal = employee; // compileerfout;
+// animal = employee; // ok als Employee alle velden en methods heeft die Animal heeft (v1);
+// anders compileerfout (v2)
