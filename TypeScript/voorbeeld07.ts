@@ -5,6 +5,7 @@ class Bankrekening {
     houder: string;  // default visibiliteit: public
     constructor(nummer: string, houder = "", saldo = 0) {
         this.nummer = nummer;
+        this.houder = houder;
         this.saldo = saldo;
     }
     toString(): string{
