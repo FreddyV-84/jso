@@ -1,6 +1,6 @@
 'use strict';
 
-var myModule = require('./myModule.js');
+var myModule = require('./myModule'); // .js is optional
 var myModule2 = require('./myModule2.js');
 
 console.log(myModule.myProp); // string
